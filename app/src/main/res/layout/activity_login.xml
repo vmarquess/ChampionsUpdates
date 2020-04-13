@@ -39,14 +39,15 @@
         android:id="@+id/campoEmail"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="92dp"
         android:gravity="bottom"
         android:hint="E-mail"
-        android:textColorHint="@color/Branco"
-        android:textColor="@color/Branco"
         android:inputType="textEmailAddress"
+        android:textColor="@color/Branco"
+        android:textColorHint="@color/Branco"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
@@ -69,8 +70,8 @@
         android:id="@+id/logo"
         android:layout_width="314dp"
         android:layout_height="234dp"
-        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toTopOf="@+id/guideline_acima"
         app:srcCompat="@drawable/logo" />
@@ -120,6 +121,22 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@id/texto_ou" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="349dp"
+        android:layout_height="75dp"
+        android:fontFamily="@font/faster_one"
+        android:gravity="center"
+        android:text="Libertadores Updates"
+        android:textColor="@color/Branco"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/campoEmail"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.262" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

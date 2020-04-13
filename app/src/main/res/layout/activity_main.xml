@@ -43,13 +43,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Times"
                 android:textColor="@color/preto"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
         </androidx.cardview.widget.CardView>
 
@@ -66,13 +68,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Grupos"
                 android:textColor="@color/preto"
-                android:gravity="center"
-                android:textSize="20sp"/>
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
         </androidx.cardview.widget.CardView>
 
@@ -89,13 +93,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Jogos"
                 android:textColor="@color/preto"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
         </androidx.cardview.widget.CardView>
 
@@ -120,7 +126,8 @@
                 android:gravity="center"
                 android:text="Perfil"
                 android:textColor="@color/preto"
-                android:textSize="20sp" />
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
         </androidx.cardview.widget.CardView>
 
