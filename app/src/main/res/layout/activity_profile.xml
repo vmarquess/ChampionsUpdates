@@ -90,11 +90,12 @@
         android:id="@+id/bt_salvar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Salvar"
-        android:layout_marginTop="45dp"
-        app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
-        app:layout_constraintTop_toBottomOf="@id/timeUsuario"/>
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
+        app:layout_constraintTop_toBottomOf="@+id/emailUsuario" />
 
     <Button
         android:id="@+id/bt_voltar"
@@ -105,5 +106,18 @@
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
         app:layout_constraintTop_toBottomOf="@id/bt_salvar"/>
+
+    <EditText
+        android:id="@+id/emailUsuario"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/Branco"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
+        app:layout_constraintTop_toBottomOf="@+id/timeUsuario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

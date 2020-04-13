@@ -3,6 +3,7 @@ package br.com.victoriasantos.libertadoresupdates.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import br.com.victoriasantos.libertadoresupdates.R
+import br.com.victoriasantos.libertadoresupdates.domain.Profile
 import br.com.victoriasantos.libertadoresupdates.interactor.FirebaseInteractor
 
 class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
@@ -65,4 +66,35 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
         }
 
     }
+
+    fun getEmail(callback: (email: String) -> Unit){
+        interactor.getEmail(callback)
+    }
+
+    fun consulta(callback: (perfil: Profile?) -> Unit){
+        interactor.consulta(callback)
+    }
+
+    fun saveData(emailCampo: String, nome: String, telefone: String, time: String, callback: (result: String, id: Int) -> Unit){
+        interactor.saveData(emailCampo, nome, telefone, time){ result ->
+            if (result == "EMPTY DATA"){
+                callback("Email deve estar preenchido!", 0)
+            }
+            else if(result == "SUCCESS"){
+                callback("Perfil salvo!", 1)
+
+            }
+            else if(result == "UID RECOVER FAIL"){
+                callback("Erro na recuperação da identificação do usuário", 0)
+            }
+            else{
+                //error
+                callback(result, 0)
+            }
+        }
+    }
+
+
+
+
 }

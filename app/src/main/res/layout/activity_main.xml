@@ -11,10 +11,11 @@
         android:id="@+id/liberta_logo"
         android:layout_width="410dp"
         android:layout_height="189dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/libertadores_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
