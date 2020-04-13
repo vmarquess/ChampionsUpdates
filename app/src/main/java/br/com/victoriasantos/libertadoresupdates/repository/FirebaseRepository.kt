@@ -10,21 +10,20 @@ class FirebaseRepository(context: Context){
     private val database = FirebaseDatabase.getInstance()
 
 
-    fun cadastrar(email: String, senha: String, callback: (result: String) -> Unit){
-        val operation = mAuth.createUserWithEmailAndPassword(email,senha)
-
+    fun cadastro(email: String, senha: String, callback: (result: String) -> Unit){
+        val operation = mAuth.createUserWithEmailAndPassword(email, senha)
         operation.addOnCompleteListener { task ->
             if(task.isSuccessful){
                 callback("S")
             }
             else{
                 val error = task.exception?.localizedMessage
-                    ?: "Não foi possível cadastrar o usuário"
-
+                    ?: "Não foi possível entrar no aplicativo no momento"
                 callback(error)
             }
         }
     }
+
 
     fun login(email : String, senha : String, callback: (result : String) -> Unit){
 
@@ -38,6 +37,10 @@ class FirebaseRepository(context: Context){
                 callback(error)
             }
         }
+    }
+
+    fun changePassword(email: String){
+        mAuth.sendPasswordResetEmail(email)
     }
 
 

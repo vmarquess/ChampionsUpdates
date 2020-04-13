@@ -34,35 +34,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_end="19dp" />
-    <EditText
-        android:id="@+id/nomeUsuario"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:gravity="bottom"
-        android:hint="Nome completo"
-        android:textColorHint="@color/Branco"
-        android:textColor="@color/Branco"
-        android:inputType="text"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
-        app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
-        app:layout_constraintTop_toBottomOf="@+id/cabeçalho" />
 
     <EditText
         android:id="@+id/campoEmail"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:gravity="bottom"
         android:hint="E-mail"
-        android:textColorHint="@color/Branco"
-        android:textColor="@color/Branco"
         android:inputType="textEmailAddress"
+        android:textColor="@color/Branco"
+        android:textColorHint="@color/Branco"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
-        app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/cabeçalho" />
 
     <EditText
         android:id="@+id/campoSenha"
@@ -93,21 +80,28 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_acima" />
 
 
-
     <Button
         android:id="@+id/bt_cadastro"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="Cadastrar"
-        app:layout_constraintTop_toBottomOf="@id/campoSenha"
+        app:layout_constraintEnd_toStartOf="@id/guideline_direito"
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
-        app:layout_constraintEnd_toStartOf="@id/guideline_direito"/>
+        app:layout_constraintTop_toBottomOf="@id/campoSenha" />
 
-
-
-
-
+    <ImageView
+        android:id="@+id/liberta_logo"
+        android:layout_width="0dp"
+        android:layout_height="181dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/libertadores_logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

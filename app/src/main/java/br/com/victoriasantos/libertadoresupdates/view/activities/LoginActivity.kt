@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, result, Toast.LENGTH_LONG).show()
 
             if (id == 1) {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, ProfileActivity::class.java))
                 finish()
             }
         }
