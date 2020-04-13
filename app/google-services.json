@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "752737364643",
+    "firebase_url": "https://libertadoresupdates.firebaseio.com",
+    "project_id": "libertadoresupdates",
+    "storage_bucket": "libertadoresupdates.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752737364643:android:e0610264158e4ee465ad16",
+        "android_client_info": {
+          "package_name": "br.com.victoriasantos.libertadoresupdates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752737364643-54jqrsn1jt8o1s9p7bsh0f5i3pcr59ko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC34PA5eGjyT5f2Dc4gOG9xkxk2gH5R-R4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752737364643-54jqrsn1jt8o1s9p7bsh0f5i3pcr59ko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
