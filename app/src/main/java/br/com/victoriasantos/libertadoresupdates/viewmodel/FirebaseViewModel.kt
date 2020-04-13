@@ -28,8 +28,6 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
             else{
                 callback(result, 0)
             }
-
-
         }
 
     }

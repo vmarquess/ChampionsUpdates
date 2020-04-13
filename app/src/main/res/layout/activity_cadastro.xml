@@ -96,9 +96,9 @@
         android:layout_height="181dp"
         android:layout_marginTop="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_direito"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@+id/bt_cadastro"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/libertadores_logo" />
