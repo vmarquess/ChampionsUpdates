@@ -10,50 +10,32 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
 
     private val interactor = FirebaseInteractor(app.applicationContext)
 
-    fun login(email: String, senha: String, callback: (result: String, id: Int) -> Unit) {
+    fun acaoFirebaseUsuario(email: String, senha: String , tipoAcao : Int, callback: (result: String, id: Int) -> Unit) {
 
-        interactor.login(email, senha){ result ->
-
-            if(result == "EV"){
-                callback("Email obrigatório", 0)
-            }
-            else if(result == "SV"){
-                callback("Senha obrigatória", 0)
-            }
-            else if(result == "SC"){
-                callback("Senha precisa ter ao menos 6 caracteres", 0)
-            }
-            else if(result == "S"){
-                callback("Bem vindo/a", 1)
-            }
-            else{
-                callback(result, 0)
-            }
-        }
-
-    }
-
-    fun cadastro(email: String, senha: String, callback: (result: String, id: Int) -> Unit){
-        interactor.cadastro(email, senha){ result ->
+        interactor.acaoFirebaseUsuario(email, senha, tipoAcao){ result ->
 
             if(result == "EV"){
                 callback(app.applicationContext.getString(R.string.email_required), 0)
             }
             else if(result == "SV"){
-                callback(app.applicationContext.getString(R.string.password_required), 0)
+                callback(app.applicationContext.getString(R.string.senha_required), 0)
             }
             else if(result == "SC"){
-                // TODO: MUDAR AS STRINGS PARA O PADRAO ACIMA
-                callback("Senha precisa ter ao menos 6 caracteres", 0)
+                callback(app.applicationContext.getString(R.string.senha_tamanho_required), 0)
             }
-            else if(result == "S"){
-                callback("Email autenticado, para concluir o cadastro preencha o perfil!", 1)
+            else if(result == "S" && tipoAcao == 1){
+                callback(app.applicationContext.getString(R.string.welcome), 1)
+            }
+            else if(result == "S" && tipoAcao == 2){
+                callback(app.applicationContext.getString(R.string.sucesso_cadastro_autenticado), 1)
             }
             else{
                 callback(result, 0)
             }
         }
+
     }
+
 
     fun changePassword(email: String, callback: (result: String, id: Int) -> Unit){
         interactor.changePassword(email){ result ->
@@ -93,8 +75,5 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
             }
         }
     }
-
-
-
 
 }

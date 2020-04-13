@@ -28,7 +28,7 @@ class CadastroActivity : AppCompatActivity() {
         val email = campoEmail.text.toString()
         val senha = campoEmail.text.toString()
 
-        viewModel.cadastro(email, senha) { result, id ->
+        viewModel.acaoFirebaseUsuario(email, senha,2) { result, id ->
 
             Toast.makeText(this, result, Toast.LENGTH_LONG).show()
             if(id == 1) {

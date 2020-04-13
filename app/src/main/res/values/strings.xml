@@ -2,4 +2,8 @@
     <string name="app_name">LibertadoresUpdates</string>
     <string name="email_required">Email obrigatório</string>
     <string name="password_required">Senha obrigatória</string>
+    <string name="senha_tamanho_required">Senha precisa ter ao menos 6 caracteres</string>
+    <string name="senha_required">Senha obrigatória</string>
+    <string name="welcome">Bem vindo/a</string>
+    <string name="sucesso_cadastro_autenticado">Email autenticado, para concluir o cadastro preencha o perfil!</string>
 </resources>

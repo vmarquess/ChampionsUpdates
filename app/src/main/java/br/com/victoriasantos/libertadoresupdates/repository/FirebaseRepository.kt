@@ -49,7 +49,7 @@ class FirebaseRepository(context: Context){
     }
 
     fun getEmail(callback: (email: String?) -> Unit){
-        var emailFinal = mAuth.currentUser?.email
+        val emailFinal = mAuth.currentUser?.email
         callback(emailFinal)
     }
 
@@ -69,7 +69,7 @@ class FirebaseRepository(context: Context){
     }
 
 
-    fun UpdateEmail(email: String, callback: (result: String) -> Unit ){
+    fun updateEmail(email: String, callback: (result: String) -> Unit ){
 
         val usuario = mAuth.currentUser
 
