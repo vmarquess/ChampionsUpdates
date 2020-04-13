@@ -24,7 +24,7 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
                 callback("Senha precisa ter ao menos 6 caracteres", 0)
             }
             else if(result == "S"){
-                callback("Email autenticado, para concluir o cadastro preencha o perfil!", 1)
+                callback("Bem vindo/a", 1)
             }
             else{
                 callback(result, 0)
