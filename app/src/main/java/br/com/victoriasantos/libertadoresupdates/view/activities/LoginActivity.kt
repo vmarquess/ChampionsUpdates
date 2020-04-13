@@ -26,11 +26,12 @@ class LoginActivity : AppCompatActivity() {
         bt_login.setOnClickListener { login() }
     }
 
+
     private fun login() {
         val email = campoEmail.text.toString()
         val senha = campoSenha.text.toString()
 
-        viewModel.login(email, senha) { result, id ->
+        viewModel.acaoFirebaseUsuario(email, senha,1) { result, id ->
             Toast.makeText(this, result, Toast.LENGTH_LONG).show()
 
             if (id == 1) {

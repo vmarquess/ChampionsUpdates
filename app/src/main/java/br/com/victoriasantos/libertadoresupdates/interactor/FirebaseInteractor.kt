@@ -9,40 +9,41 @@ class FirebaseInteractor(private val context : Context) {
     private val repository = FirebaseRepository(context)
     private var profile: Profile? = null
 
-    fun login(email: String, senha: String, callback: (result: String) -> Unit) {
+    fun campoVazio(campo: String): Boolean {
 
-        if (email.isEmpty()) {
-            callback("EV")
-            return
-        }
-        if (senha.isEmpty()) {
-            callback("SV")
-            return
-        } else {
-            if (senha.length < 6) {
-                callback("SC")
-                return
+        if(campo != null){
+            if (campo.isEmpty()) {
+                return true
             }
+            else if (campo.isBlank()){
+                return true
+            }
+        }else{
+            return false
         }
-        repository.login(email, senha, callback)
+
+        return false
     }
 
-    fun cadastro(email: String, senha: String, callback: (result: String) -> Unit) {
+    fun acaoFirebaseUsuario(email: String, senha: String, tipoAcao : Int, callback: (result: String) -> Unit) {
 
-        if (email.isEmpty()) {
+        if(this.campoVazio(email)){
             callback("EV")
             return
         }
-        if (senha.isEmpty()) {
+
+        if(this.campoVazio(senha)) {
             callback("SV")
             return
-        } else {
-            if (senha.length < 6) {
-                callback("SC")
-                return
-            }
+        } else if(senha.length < 6){
+            callback("SC")
         }
-        repository.cadastro(email, senha, callback)
+
+        if(tipoAcao == 1){
+            repository.login(email, senha, callback)
+        }else if(tipoAcao == 2){
+            repository.cadastro(email, senha, callback)
+        }
     }
 
     fun changePassword(email: String, callback: (result: String) -> Unit){
@@ -84,7 +85,7 @@ class FirebaseInteractor(private val context : Context) {
         repository.getEmail { emailFinal ->
             if (!emailFinal.equals(emailCampo)) { // Pergunta se o email do usuario antigo(emailFinal) é diferente(por ter uma ! no início) ao email que está no campo da página(emailCampo)
                 val email = emailCampo
-                repository.UpdateEmail(email) { result ->
+                repository.updateEmail(email) { result ->
                     if (result == "S") {
                         if (email.isNotEmpty()) {
                             repository.saveData(email, nome, telefone, time, callback)
@@ -92,12 +93,10 @@ class FirebaseInteractor(private val context : Context) {
                             callback("EMPTY DATA")
                             // Todos os campos devem ser preenchidos!"
                         }
-
                     }
                     else{
                         callback(result)
                     }
-
                 }
             }
             else{
