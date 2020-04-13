@@ -121,16 +121,5 @@
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@id/texto_ou" />
 
-    <ImageView
-        android:id="@+id/liberta_logo"
-        android:layout_width="107dp"
-        android:layout_height="127dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/libertadores_logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
