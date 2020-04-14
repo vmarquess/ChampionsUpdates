@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
 
         bt_cadastro.setOnClickListener { cadastrar() }
         esqueci_senha.setOnClickListener { esqueciSenha() }
-
         bt_login.setOnClickListener { login() }
     }
 

@@ -6,6 +6,7 @@ data class TimeDTO(
     val name: String? = null,
     val logo: String? = null,
     val country: String? = null,
+    @SerializedName("venue_name")
     val estadio: String? = null,
     @SerializedName("founded")
     val fundacao: String? = null

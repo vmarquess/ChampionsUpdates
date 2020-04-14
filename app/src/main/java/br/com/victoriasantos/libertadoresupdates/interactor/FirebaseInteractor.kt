@@ -31,18 +31,18 @@ class FirebaseInteractor(private val context : Context) {
             callback("EV")
             return
         }
-
         if(this.campoVazio(senha)) {
             callback("SV")
             return
+
         } else if(senha.length < 6){
             callback("SC")
         }
 
         if(tipoAcao == 1){
-            repository.login(email, senha, callback)
+            repository.login (email, senha, callback)
         }else if(tipoAcao == 2){
-            repository.cadastro(email, senha, callback)
+            repository.cadastro (email, senha, callback)
         }
     }
 

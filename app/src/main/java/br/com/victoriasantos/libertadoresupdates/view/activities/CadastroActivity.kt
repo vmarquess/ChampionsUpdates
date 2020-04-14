@@ -26,7 +26,7 @@ class CadastroActivity : AppCompatActivity() {
     private fun cadastrar(){
 
         val email = campoEmail.text.toString()
-        val senha = campoEmail.text.toString()
+        val senha = campoSenha.text.toString()
 
         viewModel.acaoFirebaseUsuario(email, senha,2) { result, id ->
 
