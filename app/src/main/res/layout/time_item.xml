@@ -8,26 +8,32 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content"
+        android:background="@drawable/mainbackground">
 
         <ImageView
             android:id="@+id/escudo"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="2dp"
+            android:layout_width="156dp"
+            android:layout_height="155dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
             android:maxWidth="100dp"
             android:maxHeight="100dp"
             android:scaleType="fitXY"
-            android:src="@drawable/background"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/separador"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.489" />
 
         <View
             android:id="@+id/separador"
             android:layout_width="1dp"
             android:layout_height="0dp"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/Branco"
             android:ellipsize="end"
             android:lines="2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -36,10 +42,13 @@
 
         <TextView
             android:id="@+id/nome"
+            android:textColor="@color/Branco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:gravity="fill|fill_horizontal"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/separador"
@@ -47,11 +56,13 @@
 
         <TextView
             android:id="@+id/pais"
+            android:textColor="@color/Branco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:gravity="fill"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/separador"
@@ -59,11 +70,13 @@
 
         <TextView
             android:id="@+id/estadio"
+            android:textColor="@color/Branco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:gravity="fill"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toEndOf="@+id/separador"
@@ -71,15 +84,20 @@
 
         <TextView
             android:id="@+id/fundacao"
+            android:textColor="@color/Branco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
             android:gravity="fill"
-            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/separador"
-            app:layout_constraintTop_toBottomOf="@+id/estadio" />
+            app:layout_constraintTop_toBottomOf="@+id/estadio"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
