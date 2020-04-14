@@ -21,8 +21,8 @@ class TimesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_times)
 
-        showTeams()
         configureRecyclerView()
+        showTeams()
     }
 
     private fun showTeams(){

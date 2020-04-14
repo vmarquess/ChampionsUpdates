@@ -1,8 +1,8 @@
 package br.com.victoriasantos.libertadoresupdates.repository
 
+import android.content.Context
 import retrofit2.Call
 import br.com.victoriasantos.libertadoresupdates.domain.Time
-import br.com.victoriasantos.libertadoresupdates.interactor.FootballAPIInteractor
 import br.com.victoriasantos.libertadoresupdates.repository.dto.TimeAPIDTO
 import retrofit2.Response
 import retrofit2.http.GET
@@ -20,7 +20,7 @@ interface TimeInterfaceRepository{
     ): Call<TimeAPIDTO>
 }
 
-class FootballAPIRepository(context: FootballAPIInteractor, baseUrl: String) : BaseRetrofit(context, baseUrl) {
+class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(context, baseUrl) {
     private val service = retrofit.create(TimeInterfaceRepository::class.java)
 
     fun teams(callback: (times: Array<Time>) -> Unit){

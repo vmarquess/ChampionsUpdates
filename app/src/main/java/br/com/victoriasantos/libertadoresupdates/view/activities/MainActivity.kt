@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         times.setOnClickListener {
             startActivity(Intent(this, TimesActivity::class.java))
+            finish()
         }
 
         grupos.setOnClickListener {
