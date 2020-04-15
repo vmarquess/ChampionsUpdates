@@ -1,11 +1,16 @@
 package br.com.victoriasantos.libertadoresupdates.repository
 
 import android.content.Context
+import br.com.victoriasantos.libertadoresupdates.domain.Match
 import retrofit2.Call
-import br.com.victoriasantos.libertadoresupdates.domain.Time
+import br.com.victoriasantos.libertadoresupdates.domain.Team
+import br.com.victoriasantos.libertadoresupdates.domain.TeamRanked
+import br.com.victoriasantos.libertadoresupdates.repository.dto.MatchesAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.dto.TableAPIDTO
 import br.com.victoriasantos.libertadoresupdates.repository.dto.TimeAPIDTO
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 import retrofit2.http.Header
 import retrofit2.Callback
 
@@ -18,34 +23,58 @@ interface TimeInterfaceRepository{
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TimeAPIDTO>
+
+}
+
+
+interface TabelaInterfaceRepository {
+    @GET("leagueTable/1251")
+
+    fun table(
+        @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
+        @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
+    ): Call<TableAPIDTO>
+
+}
+
+interface JogosInterface{
+
+    @GET("fixtures/league/1251")
+    fun matches(
+        @Query("timezone") Timezone: String = "America/Sao_Paulo",
+        @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
+        @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
+    )
 }
 
 class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(context, baseUrl) {
-    private val service = retrofit.create(TimeInterfaceRepository::class.java)
+    private val serviceTeams = retrofit.create(TimeInterfaceRepository::class.java)
+    private val serviceTable = retrofit.create(TabelaInterfaceRepository::class.java)
+    private val serviceMatches = retrofit.create(JogosInterface::class.java)
 
-    fun teams(callback: (times: Array<Time>) -> Unit){
+    fun teams(callback: (times: Array<Team>) -> Unit) {
 
-        service.teams().enqueue(object : Callback<TimeAPIDTO> {
+        serviceTeams.teams().enqueue(object : Callback<TimeAPIDTO> {
 
-            override fun onResponse(call: Call<TimeAPIDTO>, response: Response<TimeAPIDTO> ){
+            override fun onResponse(call: Call<TimeAPIDTO>, response: Response<TimeAPIDTO>) {
                 val times = response.body()?.api?.teams
-               var result = mutableListOf<Time>()
+                var result = mutableListOf<Team>()
 
-               times?.forEach { t ->
-                   val domain = Time(
-                       name = t.name,
-                       logo = t.logo,
-                       country = t.country,
-                       estadio = t.estadio,
-                       fundacao = t.fundacao
-                   )
-                   result.add(domain)
-               }
+                times?.forEach { t ->
+                    val domain = Team(
+                        name = t.name,
+                        logo = t.logo,
+                        country = t.country,
+                        estadio = t.estadio,
+                        fundacao = t.fundacao
+                    )
+                    result.add(domain)
+                }
 
-               callback(result.toTypedArray())
-           }
+                callback(result.toTypedArray())
+            }
 
-            override fun onFailure(call: Call<TimeAPIDTO>, t: Throwable ){
+            override fun onFailure(call: Call<TimeAPIDTO>, t: Throwable) {
                 callback(arrayOf())
             }
         })
@@ -54,5 +83,63 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
     }
 
 
+
+    fun table(callback: (standings: Array<TeamRanked>) -> Unit) {
+
+        serviceTable.table().enqueue(object : Callback<TableAPIDTO> {
+
+            override fun onResponse(call: Call<TableAPIDTO>, response: Response<TableAPIDTO>) {
+                val teams = response.body()?.api?.standings
+                var result = mutableListOf<TeamRanked>()
+
+                teams?.forEach { t ->
+                    t.forEach { s ->
+                        var saldo: Int? = s.all?.goalsFor?.minus(s.all.goalsAgainst)
+                        val domain = TeamRanked(
+                            rank = s.rank.toString(),
+                            escudo = s.logo,
+                            nome = s.teamName,
+                            partidas = s.all?.matchsPlayed.toString(),
+                            vitorias = s.all?.win.toString(),
+                            empates = s.all?.draw.toString(),
+                            derrotas = s.all?.lose.toString(),
+                            pontos = s.points.toString(),
+                            grupo = s.group,
+                            saldo = saldo.toString()
+                        )
+                        result.add(domain)
+
+                    }
+                }
+                callback(result.toTypedArray())
+            }
+
+            override fun onFailure(call: Call<TableAPIDTO>, t: Throwable) {
+                callback(arrayOf())
+            }
+        })
+    }
+
+    fun matches(callback: (jogos: Array<Match>) -> Unit){
+
+        serviceMatches.matches().enqueue(object: Callback<MatchesAPIDTO> {
+
+            override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
+                TODO("not implemented")
+
+            }
+
+            override fun onFailure(call: Call<MatchesAPIDTO>, t: Throwable) {
+                TODO("not implemented")
+            }
+
+
+
+        })
+
+    }
 }
+
+
+
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity"
-    android:background="@drawable/mainbackground">
+    android:background="@drawable/background_teste">
 
     <ImageView
         android:id="@+id/liberta_logo"
@@ -39,7 +39,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:src="@drawable/mainbackground"
+                android:background="@drawable/background_teste"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -64,7 +64,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:src="@drawable/mainbackground"
+                android:background="@drawable/background_teste"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -81,7 +81,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/jogos"
+            android:id="@+id/derrotas"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_height="10dp"
@@ -89,7 +89,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:src="@drawable/mainbackground"
+                android:background="@drawable/background_teste"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -115,7 +115,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:src="@drawable/mainbackground"
+                android:background="@drawable/background_teste"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>

@@ -7,12 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.domain.Time
+import br.com.victoriasantos.libertadoresupdates.domain.Team
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.time_item.view.*
 
 
-class TimeAdapter(private val dataSet: Array<Time>) :
+class TimeAdapter(private val dataSet: Array<Team>) :
     RecyclerView.Adapter<TimeAdapter.TimeViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder {
@@ -36,8 +36,8 @@ class TimeAdapter(private val dataSet: Array<Time>) :
 
     class TimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val escudo: ImageView = itemView.escudo
-        val nome: TextView = itemView.nome
-        val pais: TextView = itemView.pais
+        val nome: TextView = itemView.rank
+        val pais: TextView = itemView.empates
         val estadio: TextView = itemView.estadio
         val fundacao: TextView = itemView.fundacao
 

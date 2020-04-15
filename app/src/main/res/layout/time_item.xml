@@ -42,7 +42,7 @@
 
 
         <TextView
-            android:id="@+id/nome"
+            android:id="@+id/rank"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/pais"
+            android:id="@+id/empates"
             android:textColor="@color/Branco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/separador"
-            app:layout_constraintTop_toBottomOf="@+id/nome" />
+            app:layout_constraintTop_toBottomOf="@+id/rank" />
 
         <TextView
             android:id="@+id/estadio"
@@ -83,7 +83,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toEndOf="@+id/separador"
-            app:layout_constraintTop_toBottomOf="@+id/pais" />
+            app:layout_constraintTop_toBottomOf="@+id/empates" />
 
         <TextView
             android:id="@+id/fundacao"
