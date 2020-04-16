@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.ProfileActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background_teste">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_esquerdo"
@@ -68,6 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="44dp"
         android:layout_marginTop="15dp"
+        android:textColor="@color/Branco"
         app:layout_constraintTop_toBottomOf="@id/nomeUsuario"
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
@@ -80,6 +81,7 @@
         android:layout_height="44dp"
         android:layout_marginTop="15dp"
         android:hint="Time do coração"
+        android:textColor="@color/Branco"
         android:textColorHint="@color/Branco"
         app:layout_constraintTop_toBottomOf="@id/telefoneUsuario"
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
@@ -114,6 +116,7 @@
         android:layout_marginTop="20dp"
         android:hint="Email"
         android:inputType="textPersonName"
+        android:textColor="@color/Branco"
         android:textColorHint="@color/Branco"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
         app:layout_constraintHorizontal_bias="0.0"

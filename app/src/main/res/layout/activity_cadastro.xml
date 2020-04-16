@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.CadastroActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background_teste">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_esquerdo"
@@ -97,10 +97,10 @@
         android:layout_marginTop="68dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_baixo"
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@+id/bt_cadastro"
-        app:layout_constraintVertical_bias="0.69"
+        app:layout_constraintVertical_bias="0.067"
         app:srcCompat="@drawable/libertadores_logo" />
 
 

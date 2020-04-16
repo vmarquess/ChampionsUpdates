@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.LoginActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background_teste">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_esquerdo"
@@ -39,7 +39,7 @@
         android:id="@+id/campoEmail"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="100dp"
         android:gravity="bottom"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
@@ -47,7 +47,7 @@
         android:textColorHint="@color/Branco"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
@@ -70,8 +70,9 @@
         android:id="@+id/logo"
         android:layout_width="314dp"
         android:layout_height="234dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toTopOf="@+id/guideline_acima"
         app:srcCompat="@drawable/logo" />
@@ -130,7 +131,7 @@
         android:gravity="center"
         android:text="Libertadores Updates"
         android:textColor="@color/Branco"
-        android:textSize="26sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/campoEmail"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
         app:layout_constraintHorizontal_bias="0.0"
