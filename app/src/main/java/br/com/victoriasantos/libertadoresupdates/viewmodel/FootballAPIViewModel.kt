@@ -33,8 +33,6 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
     }
 
     fun table(LeagueId: Int, callback: (tabela: Array<TeamRanked>) -> Unit){
-        //TODO: ALTERAR O NÚMERO 524 PARA UM PARÂMETRO DESSA FUNÇÃO.
-        // O NÚMERO DO TIME DEVE SER PARAMETRIZADO. NÃO DEIXE FIXO
 
         interactor.table(LeagueId) { t ->
             val tabela = mutableListOf<TeamRanked>()

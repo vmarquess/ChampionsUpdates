@@ -24,5 +24,9 @@ data class TeamRankedDTO(
 
 
 data class StandingsDTO(
-    val standings: Array<Array<TeamRankedDTO>>? = null
+    val standings: Array<Grupo>? = null
+)
+
+data class Grupo(
+    val times: Array<TeamRankedDTO>? = null
 )

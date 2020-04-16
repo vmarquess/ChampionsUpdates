@@ -18,7 +18,7 @@ import retrofit2.Callback
 
 interface TimeInterfaceRepository{
 
-    @GET("teams//{LeagueId}")
+    @GET("teams/league/{LeagueId}")
     fun teams(
         @Path("LeagueId") LeagueId: Int,
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
