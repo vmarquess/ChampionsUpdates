@@ -10,8 +10,9 @@ import br.com.victoriasantos.libertadoresupdates.interactor.FootballAPIInteracto
 class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
     private val interactor = FootballAPIInteractor(app.applicationContext)
 
-    fun teams(callback: (times: Array<Team>) -> Unit){
-        interactor.teams{ t ->
+
+    fun teams(LeagueId: Int, callback: (times: Array<Team>) -> Unit){
+        interactor.teams(LeagueId){ t ->
             val times = mutableListOf<Team>()
 
             t.forEach { team ->
@@ -31,8 +32,11 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
     }
 
-    fun table(callback: (tabela: Array<TeamRanked>) -> Unit){
-        interactor.table{ t ->
+    fun table(LeagueId: Int, callback: (tabela: Array<TeamRanked>) -> Unit){
+        //TODO: ALTERAR O NÚMERO 524 PARA UM PARÂMETRO DESSA FUNÇÃO.
+        // O NÚMERO DO TIME DEVE SER PARAMETRIZADO. NÃO DEIXE FIXO
+
+        interactor.table(LeagueId) { t ->
             val tabela = mutableListOf<TeamRanked>()
             t.forEach { team ->
                 val newRakedTeam = TeamRanked(
@@ -53,8 +57,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun matches(callback: (jogos: Array<Match>) -> Unit){
-        interactor.matches{ m ->
+    fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
+        interactor.matches(LeagueId){ m ->
             val matches = mutableListOf<Match>()
             m.forEach{ match ->
                 val newMatch = Match(

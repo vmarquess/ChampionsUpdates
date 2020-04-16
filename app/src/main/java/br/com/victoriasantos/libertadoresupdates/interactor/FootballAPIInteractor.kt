@@ -9,16 +9,16 @@ import br.com.victoriasantos.libertadoresupdates.repository.FootballAPIRepositor
 class FootballAPIInteractor(private val context: Context) {
     private val repository = FootballAPIRepository(context, "https://api-football-v1.p.rapidapi.com/v2/")
 
-    fun teams(callback: (times: Array<Team>) -> Unit){
-        repository.teams(callback)
+    fun teams(LeagueId: Int, callback: (times: Array<Team>) -> Unit){
+        repository.teams(LeagueId, callback)
     }
 
-    fun table(callback: (tabela: Array<TeamRanked>) -> Unit){
-        repository.table(callback)
+    fun table(LeagueId: Int, callback: (tabela: Array<TeamRanked>) -> Unit){
+        repository.table(LeagueId, callback)
     }
 
-    fun matches(callback: (jogos: Array<Match>) -> Unit){
-        repository.matches(callback)
+    fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
+        repository.matches(LeagueId, callback)
     }
 
 }

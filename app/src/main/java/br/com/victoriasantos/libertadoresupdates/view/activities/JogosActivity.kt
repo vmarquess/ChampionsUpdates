@@ -28,7 +28,7 @@ class JogosActivity : AppCompatActivity() {
     }
 
     fun showMatches(){
-        viewModel.matches{ matches ->
+        viewModel.matches(1251){ matches ->
             val adapter = JogosAdapter(matches)
             JogosRecyclerView.adapter = adapter
 

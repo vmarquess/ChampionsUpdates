@@ -28,8 +28,22 @@ data class Match(
     val awayTeam: Team? = null,
     @SerializedName("elapsed")
     val tempo: Int? = null,
-    val score: Score? = null
+    val score: Score? = null,
+    val events: Array<Event>? = null
 
+)
+
+data class Event(
+    @SerializedName("elapsed")
+    val tempo: Int? = null,
+    @SerializedName("elapsed_plus")
+    val acrescimo: Int? = null,
+    val teamName: String? = null,
+    val player: String? = null,
+    val assist: String? = null,
+    val type: String? = null,
+    val detail: String? = null,
+    val comments: String? = null
 )
 
 

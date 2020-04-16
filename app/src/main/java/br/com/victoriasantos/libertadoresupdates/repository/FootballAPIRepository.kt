@@ -12,14 +12,15 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.Callback
-
 
 
 interface TimeInterfaceRepository{
 
-    @GET("teams/league/1251")
+    @GET("teams//{LeagueId}")
     fun teams(
+        @Path("LeagueId") LeagueId: Int,
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TimeAPIDTO>
@@ -28,9 +29,10 @@ interface TimeInterfaceRepository{
 
 
 interface TabelaInterfaceRepository {
-    @GET("leagueTable/1251")
+    @GET("leagueTable/{LeagueId}")
 
     fun table(
+        @Path("LeagueId") LeagueId: Int,
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TableAPIDTO>
@@ -39,12 +41,13 @@ interface TabelaInterfaceRepository {
 
 interface JogosInterface{
 
-    @GET("fixtures/league/1251")
+    @GET("fixtures/league/{LeagueId}")
     fun matches(
+        @Path("LeagueId") LeagueId: Int,
         @Query("timezone") Timezone: String = "America/Sao_Paulo",
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
-    ): Call<MatchesAPIDTO>
+    ):Call<MatchesAPIDTO>
 }
 
 class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(context, baseUrl) {
@@ -52,9 +55,9 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
     private val serviceTable = retrofit.create(TabelaInterfaceRepository::class.java)
     private val serviceMatches = retrofit.create(JogosInterface::class.java)
 
-    fun teams(callback: (times: Array<Team>) -> Unit) {
+    fun teams(LeagueId: Int,callback: (times: Array<Team>) -> Unit) {
 
-        serviceTeams.teams().enqueue(object : Callback<TimeAPIDTO> {
+        serviceTeams.teams(LeagueId).enqueue(object : Callback<TimeAPIDTO> {
 
             override fun onResponse(call: Call<TimeAPIDTO>, response: Response<TimeAPIDTO>) {
                 val times = response.body()?.api?.teams
@@ -84,9 +87,9 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
 
 
-    fun table(callback: (standings: Array<TeamRanked>) -> Unit) {
+    fun table(LeagueId: Int, callback: (standings: Array<TeamRanked>) -> Unit) {
 
-        serviceTable.table().enqueue(object : Callback<TableAPIDTO> {
+        serviceTable.table(LeagueId).enqueue(object : Callback<TableAPIDTO> {
 
             override fun onResponse(call: Call<TableAPIDTO>, response: Response<TableAPIDTO>) {
                 val teams = response.body()?.api?.standings
@@ -120,9 +123,9 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
         })
     }
 
-    fun matches(callback: (jogos: Array<Match>) -> Unit){
+    fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
 
-        serviceMatches.matches().enqueue(object: Callback<MatchesAPIDTO> {
+        serviceMatches.matches(LeagueId).enqueue(object: Callback<MatchesAPIDTO> {
 
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures

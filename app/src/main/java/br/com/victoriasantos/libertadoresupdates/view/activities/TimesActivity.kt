@@ -27,7 +27,7 @@ class TimesActivity : AppCompatActivity() {
 
     private fun showTeams(){
 
-        viewModel.teams { times ->
+        viewModel.teams(1251) { times ->
             val adapter = TimeAdapter(times)
             TimesRecyclerView.adapter = adapter
 
