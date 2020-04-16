@@ -3,8 +3,11 @@ package br.com.victoriasantos.libertadoresupdates.view.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
+import br.com.victoriasantos.libertadoresupdates.view.adapter.JogosAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
+import kotlinx.android.synthetic.main.activity_jogos.*
 
 class JogosActivity : AppCompatActivity() {
 
@@ -21,11 +24,13 @@ class JogosActivity : AppCompatActivity() {
 
 
     fun configureRecyclerView(){
-
+        JogosRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     fun showMatches(){
-        viewModel.matches{ m ->
+        viewModel.matches{ matches ->
+            val adapter = JogosAdapter(matches)
+            JogosRecyclerView.adapter = adapter
 
         }
 

@@ -55,7 +55,23 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun matches(callback: (jogos: Array<Match>) -> Unit){
         interactor.matches{ m ->
+            val matches = mutableListOf<Match>()
+            m.forEach{ match ->
+                val newMatch = Match(
+                    data = "Data: ${match.data}",
+                    rodada = "Rodada: ${match.rodada}",
+                    status = "Status da partida: ${match.status}",
+                    nome_time_casa = match.nome_time_casa,
+                    logo_time_casa = match.logo_time_casa,
+                    nome_time_fora = match.nome_time_fora,
+                    logo_time_fora = match.logo_time_fora,
+                    tempo = "${match.tempo}'",
+                    placar = match.placar
+                )
+                matches.add(newMatch)
 
+            }
+            callback(matches.toTypedArray())
         }
     }
 

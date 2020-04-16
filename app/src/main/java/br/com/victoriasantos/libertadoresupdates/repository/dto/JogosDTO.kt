@@ -19,7 +19,6 @@ data class Score(
     val penalty: String? = null
 )
 
-
 data class Match(
     @SerializedName("event_date")
     val data: String? = null,
@@ -32,8 +31,6 @@ data class Match(
     val score: Score? = null
 
 )
-
-
 
 
 data class MatchesList(

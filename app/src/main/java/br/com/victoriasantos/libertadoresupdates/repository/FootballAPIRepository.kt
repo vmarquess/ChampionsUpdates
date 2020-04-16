@@ -44,7 +44,7 @@ interface JogosInterface{
         @Query("timezone") Timezone: String = "America/Sao_Paulo",
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
-    )
+    ): Call<MatchesAPIDTO>
 }
 
 class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(context, baseUrl) {
@@ -125,12 +125,29 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
         serviceMatches.matches().enqueue(object: Callback<MatchesAPIDTO> {
 
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
-                TODO("not implemented")
+                val matches = response.body()?.api?.fixtures
+                var result =  mutableListOf<Match>()
 
+                matches?.forEach { m ->
+                    val domain = Match(
+                        data = m.data,
+                        rodada = m.round,
+                        status = m.status,
+                        nome_time_casa = m.homeTeam?.team_name,
+                        logo_time_casa = m.homeTeam?.logo,
+                        nome_time_fora = m.awayTeam?.team_name,
+                        logo_time_fora = m.awayTeam?.logo,
+                        tempo = m.tempo.toString(),
+                        placar = m.score?.fulltime
+                    )
+                    result.add(domain)
+
+                }
+                callback(result.toTypedArray())
             }
 
             override fun onFailure(call: Call<MatchesAPIDTO>, t: Throwable) {
-                TODO("not implemented")
+               callback(arrayOf())
             }
 
 
