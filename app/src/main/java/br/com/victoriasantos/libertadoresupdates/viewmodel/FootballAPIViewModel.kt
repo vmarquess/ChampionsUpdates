@@ -46,7 +46,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     derrotas = "Derrotas: ${team.derrotas}",
                     pontos = "Pontos : ${team.pontos}",
                     grupo = "Grupo: ${team.grupo}",
-                    saldo = "Saldo de gols: ${team.saldo}"
+                    saldo = "Saldo de gols: ${team.saldo}",
+                    escudo = team.escudo
 
                 )
                 tabela.add(newRakedTeam)

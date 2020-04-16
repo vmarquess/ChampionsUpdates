@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.LoginActivity"
-    android:background="@drawable/background_teste">
+    android:background="@drawable/mainbackground">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_esquerdo"
@@ -68,11 +68,11 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="314dp"
-        android:layout_height="234dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="301dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toTopOf="@+id/guideline_acima"
         app:srcCompat="@drawable/logo" />
@@ -125,16 +125,15 @@
 
     <TextView
         android:id="@+id/titulo"
-        android:layout_width="349dp"
-        android:layout_height="75dp"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
         android:fontFamily="@font/faster_one"
         android:gravity="center"
-        android:text="Libertadores Updates"
+        android:text="Champions Updates"
         android:textColor="@color/Branco"
-        android:textSize="36sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/campoEmail"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0.262" />

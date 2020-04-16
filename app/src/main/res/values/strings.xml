@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Champions Updates</string>
+    <string name="app_name">ChampionsUpdates</string>
     <string name="email_required">Email obrigatório</string>
     <string name="password_required">Senha obrigatória</string>
     <string name="senha_tamanho_required">Senha precisa ter ao menos 6 caracteres</string>

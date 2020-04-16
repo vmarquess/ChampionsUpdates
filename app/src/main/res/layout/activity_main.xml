@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activities.MainActivity"
-    android:background="@drawable/background_teste">
+    android:background="@drawable/mainbackground">
 
     <ImageView
         android:id="@+id/liberta_logo"
         android:layout_width="410dp"
         android:layout_height="189dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/libertadores_logo" />
+        app:srcCompat="@drawable/logo_champions" />
 
 
     <GridLayout
@@ -39,7 +39,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:background="@drawable/background_teste"
+                android:background="@drawable/mainbackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -47,11 +47,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/faster_one"
+                android:fontFamily="@font/graduate"
                 android:gravity="center"
                 android:text="Times"
-                android:textColor="@color/preto"
-                android:textSize="24sp" />
+                android:textColor="@color/Branco"
+                android:textSize="24sp"
+                android:textStyle="italic" />
 
         </androidx.cardview.widget.CardView>
 
@@ -64,7 +65,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:background="@drawable/background_teste"
+                android:background="@drawable/mainbackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -72,11 +73,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/faster_one"
+                android:fontFamily="@font/graduate"
                 android:gravity="center"
                 android:text="Grupos"
-                android:textColor="@color/preto"
-                android:textSize="24sp" />
+                android:textColor="@color/Branco"
+                android:textSize="24sp"
+                android:textStyle="italic" />
 
         </androidx.cardview.widget.CardView>
 
@@ -89,7 +91,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:background="@drawable/background_teste"
+                android:background="@drawable/mainbackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -97,11 +99,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/faster_one"
+                android:fontFamily="@font/graduate"
                 android:gravity="center"
                 android:text="Jogos"
-                android:textColor="@color/preto"
-                android:textSize="24sp" />
+                android:textColor="@color/Branco"
+                android:textSize="24sp"
+                android:textStyle="italic" />
 
         </androidx.cardview.widget.CardView>
 
@@ -115,7 +118,7 @@
             android:layout_marginBottom="5dp">
 
             <ImageView
-                android:background="@drawable/background_teste"
+                android:background="@drawable/mainbackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"/>
@@ -123,11 +126,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/faster_one"
+                android:fontFamily="@font/graduate"
                 android:gravity="center"
                 android:text="Perfil"
-                android:textColor="@color/preto"
-                android:textSize="24sp" />
+                android:textColor="@color/Branco"
+                android:textSize="24sp"
+                android:textStyle="italic" />
 
         </androidx.cardview.widget.CardView>
 
