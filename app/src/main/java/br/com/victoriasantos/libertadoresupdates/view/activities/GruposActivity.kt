@@ -30,7 +30,7 @@ class GruposActivity : AppCompatActivity() {
     }
 
     private fun showTable(){
-        viewModel.table(1251){ tabela ->
+        viewModel.table(530){ tabela ->
             val adapter = TabelaAdapter(tabela)
             TabelaRecyclerView.adapter = adapter
         }

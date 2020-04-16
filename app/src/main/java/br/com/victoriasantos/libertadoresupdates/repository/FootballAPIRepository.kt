@@ -69,7 +69,8 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         logo = t.logo,
                         country = t.country,
                         estadio = t.estadio,
-                        fundacao = t.fundacao
+                        fundacao = t.fundacao,
+                        id = t.team_id.toString()
                     )
                     result.add(domain)
                 }
@@ -84,8 +85,6 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
 
     }
-
-
 
     fun table(LeagueId: Int, callback: (standings: Array<TeamRanked>) -> Unit) {
 

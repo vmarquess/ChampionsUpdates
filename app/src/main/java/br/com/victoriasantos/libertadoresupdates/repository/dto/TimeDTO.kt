@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class TimeDTO(
     val name: String? = null,
+    val team_id: Int? = null,
     val logo: String? = null,
     val country: String? = null,
     @SerializedName("venue_name")
