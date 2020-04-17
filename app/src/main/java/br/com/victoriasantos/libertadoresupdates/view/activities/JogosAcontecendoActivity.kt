@@ -7,11 +7,9 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.adapter.EventosAdapter
 import br.com.victoriasantos.libertadoresupdates.view.adapter.JogosAcontecendoAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_jogos_acontecendo.*
-import kotlinx.android.synthetic.main.jogos_acontendo_item.*
 
 class JogosAcontecendoActivity : AppCompatActivity() {
 
@@ -29,7 +27,6 @@ class JogosAcontecendoActivity : AppCompatActivity() {
 
    private fun configureRecyclerView(){
        JogosAcontecendoRecyclerView.layoutManager = LinearLayoutManager(this)
-       EventosRecyclerView.layoutManager = LinearLayoutManager(this)
    }
 
     private fun showCurrentMatches(){
@@ -37,6 +34,7 @@ class JogosAcontecendoActivity : AppCompatActivity() {
                 if(mensagem.isNullOrBlank()){
                     val adapter = JogosAcontecendoAdapter(m)
                     JogosAcontecendoRecyclerView.adapter = adapter
+
                 }
                 else {
                     Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show()

@@ -34,9 +34,15 @@ class JogosAcontecendoAdapter(private val dataSet: Array<Match>) : RecyclerView.
         holder.tempo.text = match.tempo
         holder.status.text = match.status
         holder.data.text = match.data
-        val adapter = EventosAdapter(match.eventos)
-        holder.eventos.adapter = adapter
+        var str = ""
+        match.eventos?.forEach { e ->
+            str =
+                str.plus("${e.evento_tempo}\n ${e.evento_acrescimo}\n ${e.evento_teamName}\n ${e.evento_player}\n ${e.evento_assist}\n ${e.evento_type}\n ${e.evento_detail}\n ${e.evento_comments}")
+        }
+            holder.eventos.text = str
     }
+
+
 
     class JogosAcontecendoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val logo_tc: ImageView = itemView.logoCasa
@@ -48,7 +54,7 @@ class JogosAcontecendoAdapter(private val dataSet: Array<Match>) : RecyclerView.
         val status: TextView = itemView.status
         val data: TextView = itemView.data
         val rodada: TextView = itemView.rodada
-        val eventos: RecyclerView = itemView.EventosRecyclerView
+        val eventos: TextView = itemView.eventos
     }
 
 }
