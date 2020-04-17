@@ -6,4 +6,5 @@
     <string name="senha_required">Senha obrigatória</string>
     <string name="welcome">Bem vindo/a!</string>
     <string name="sucesso_cadastro_autenticado">Email autenticado!</string>
+    <string name="empty_jogos_futuros">Não existe jogos futuros no momento!</string>
 </resources>

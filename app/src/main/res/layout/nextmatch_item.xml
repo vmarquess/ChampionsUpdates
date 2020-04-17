@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mainbackground">
+
+        <ImageView
+            android:id="@+id/logoCasa"
+            android:layout_width="122dp"
+            android:layout_height="112dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.126" />
+
+        <TextView
+            android:id="@+id/nomeCasa"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="@color/Branco"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/separador"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logoCasa"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/logoFora"
+            android:layout_width="122dp"
+            android:layout_height="112dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="52dp"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@id/separador"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/logoCasa"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/nomeFora"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="@color/Branco"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/separador"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toEndOf="@id/nomeCasa"
+            app:layout_constraintTop_toBottomOf="@id/logoFora"
+            app:layout_constraintVertical_bias="0.025" />
+
+        <View
+            android:id="@+id/separador"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="110dp"
+            android:background="@color/Branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoCasa" />
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="70dp"
+            android:gravity="center"
+            android:textColor="@color/Branco"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separador" />
+
+        <TextView
+            android:id="@+id/rodada"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:textColor="@color/Branco"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/data"
+            app:layout_constraintBottom_toBottomOf="@id/separador2"
+            />
+
+
+        <View
+            android:id="@+id/separador2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/preto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status"
+            app:layout_constraintVertical_bias="0.333" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="76dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toStartOf="@+id/logoFora"
+            app:layout_constraintStart_toEndOf="@+id/logoCasa"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imagem_x" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

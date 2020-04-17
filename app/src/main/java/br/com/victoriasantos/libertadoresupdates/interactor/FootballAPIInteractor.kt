@@ -21,4 +21,15 @@ class FootballAPIInteractor(private val context: Context) {
         repository.matches(LeagueId, callback)
     }
 
+    fun matchesProximos(LeagueId: Int, number : Int, callback: (jogos: Array<Match>, flag : Int) -> Unit){
+        repository.Nextmatches(LeagueId, number){m ->
+            if(m.isNullOrEmpty()){
+                callback(m,0)
+            }
+            else{
+                callback(m,1)
+            }
+        }
+    }
+
 }

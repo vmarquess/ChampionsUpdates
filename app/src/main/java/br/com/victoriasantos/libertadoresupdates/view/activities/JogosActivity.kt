@@ -1,5 +1,6 @@
 package br.com.victoriasantos.libertadoresupdates.view.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +21,10 @@ class JogosActivity : AppCompatActivity() {
         setContentView(R.layout.activity_jogos)
         configureRecyclerView()
         showMatches()
+
+        jogosProx.setOnClickListener{
+            startActivity(Intent(this, ProximosJogosActivity::class.java))
+        }
     }
 
 
