@@ -24,6 +24,7 @@ class JogosActivity : AppCompatActivity() {
 
         jogosProx.setOnClickListener{
             startActivity(Intent(this, ProximosJogosActivity::class.java))
+            finish()
         }
     }
 
@@ -38,11 +39,6 @@ class JogosActivity : AppCompatActivity() {
             JogosRecyclerView.adapter = adapter
 
         }
-
     }
-
-
-
-
 }
 
