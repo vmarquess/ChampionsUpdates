@@ -31,7 +31,7 @@ class ProximosJogosActivity : AppCompatActivity() {
     }
 
     fun showMatches() {
-        viewModel.matchesProximos(530,20) { Nextmatches, mensagem ->
+        viewModel.nextMatches(530,20) { Nextmatches, mensagem ->
 
             if(mensagem.isNullOrBlank()){
                 val adapter = ProximosJogosAdapter(Nextmatches)

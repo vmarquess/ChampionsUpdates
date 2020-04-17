@@ -76,4 +76,6 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
         }
     }
 
+
+
 }

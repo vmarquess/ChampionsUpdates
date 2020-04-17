@@ -26,6 +26,14 @@ class JogosActivity : AppCompatActivity() {
             startActivity(Intent(this, ProximosJogosActivity::class.java))
             finish()
         }
+        jogosPassados.setOnClickListener {
+            startActivity(Intent(this, JogosAnterioresActivity::class.java))
+        }
+        jogosNow.setOnClickListener{
+            startActivity(Intent(this, JogosAcontecendoActivity::class.java))
+            finish()
+
+        }
     }
 
 

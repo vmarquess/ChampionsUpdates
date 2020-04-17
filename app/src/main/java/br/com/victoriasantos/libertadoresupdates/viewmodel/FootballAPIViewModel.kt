@@ -2,6 +2,7 @@ package br.com.victoriasantos.libertadoresupdates.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.domain.Evento
 import br.com.victoriasantos.libertadoresupdates.domain.Match
 import br.com.victoriasantos.libertadoresupdates.domain.Team
@@ -26,10 +27,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 )
                 times.add(newTime)
             }
-
             callback(times.toTypedArray())
         }
-
     }
 
     fun table(LeagueId: Int, callback: (tabela: Array<TeamRanked>) -> Unit){
@@ -73,7 +72,6 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     eventos = null
                 )
                 matches.add(newMatch)
-
             }
             callback(matches.toTypedArray())
         }
@@ -120,10 +118,56 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
             }
             else{
-                callback(j, "Não há jogos acontecendo!")
+                callback(j, app.applicationContext.getString(R.string.empty_current_jogos))
             }
+        }
+    }
 
+    fun nextMatches(LeagueId: Int, number : Int, callback: (jogos: Array<Match>, mensagem : String?) -> Unit){
+        interactor.nextMatches(LeagueId, number){ m, flag ->
 
+            if(flag  == 0){
+                callback(m,app.applicationContext.getString(R.string.empty_jogos_futuros))
+            }
+            else{
+                val matches = mutableListOf<Match>()
+                m.forEach{ match ->
+                    val newMatch = Match(
+                        data = "Data: ${match.data}",
+                        rodada = "Rodada: ${match.rodada}",
+                        nome_time_casa = match.nome_time_casa,
+                        logo_time_casa = match.logo_time_casa,
+                        nome_time_fora = match.nome_time_fora,
+                        logo_time_fora = match.logo_time_fora,
+                        eventos = null
+                    )
+                    matches.add(newMatch)
+
+                }
+                callback(matches.toTypedArray(), null)
+            }
+        }
+    }
+
+    fun lastMatches(LeagueId: Int, number: Int, callback: (jogos: Array<Match>) -> Unit){
+        interactor.lastMatches(LeagueId, number){ m ->
+            val matches = mutableListOf<Match>()
+            m.forEach{ match ->
+                val newMatch = Match(
+                    data = "Data: ${match.data}",
+                    rodada = "Rodada: ${match.rodada}",
+                    status = "Status da partida: ${match.status}",
+                    nome_time_casa = match.nome_time_casa,
+                    logo_time_casa = match.logo_time_casa,
+                    nome_time_fora = match.nome_time_fora,
+                    logo_time_fora = match.logo_time_fora,
+                    tempo = "${match.tempo}'",
+                    placar = match.placar,
+                    eventos = null
+                )
+                matches.add(newMatch)
+            }
+            callback(matches.toTypedArray())
         }
     }
 
