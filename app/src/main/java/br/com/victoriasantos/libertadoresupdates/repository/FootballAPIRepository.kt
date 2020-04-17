@@ -1,6 +1,7 @@
 package br.com.victoriasantos.libertadoresupdates.repository
 
 import android.content.Context
+import br.com.victoriasantos.libertadoresupdates.domain.Evento
 import br.com.victoriasantos.libertadoresupdates.domain.Match
 import retrofit2.Call
 import br.com.victoriasantos.libertadoresupdates.domain.Team
@@ -24,6 +25,7 @@ interface TimeInterfaceRepository{
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TimeAPIDTO>
+
 }
 
 
@@ -35,6 +37,7 @@ interface TabelaInterfaceRepository {
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TableAPIDTO>
+
 }
 
 interface JogosInterface{
@@ -48,12 +51,12 @@ interface JogosInterface{
     ):Call<MatchesAPIDTO>
 }
 
-interface JogosProximosInterface{
 
-    @GET("fixtures/league/{LeagueId}/next/{number}")
-    fun matchesProximas(
+interface JogosAcontecendoInterface{
+
+    @GET("fixtures/league/live/{LeagueId}")
+    fun currentMatches(
         @Path("LeagueId") LeagueId: Int,
-        @Path("number") number: Int,
         @Query("timezone") Timezone: String = "America/Sao_Paulo",
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
@@ -64,7 +67,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
     private val serviceTeams = retrofit.create(TimeInterfaceRepository::class.java)
     private val serviceTable = retrofit.create(TabelaInterfaceRepository::class.java)
     private val serviceMatches = retrofit.create(JogosInterface::class.java)
-    private val serviceNextMatches = retrofit.create(JogosProximosInterface::class.java)
+    private val servicecurrentMatches = retrofit.create(JogosAcontecendoInterface::class.java)
 
     fun teams(LeagueId: Int,callback: (times: Array<Team>) -> Unit) {
 
@@ -93,6 +96,8 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                 callback(arrayOf())
             }
         })
+
+
     }
 
     fun table(LeagueId: Int, callback: (standings: Array<TeamRanked>) -> Unit) {
@@ -110,6 +115,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                             rank = s.rank.toString(),
                             escudo = s.logo,
                             nome = s.teamName,
+                            id = s.team_id.toString(),
                             partidas = s.all?.matchsPlayed.toString(),
                             vitorias = s.all?.win.toString(),
                             empates = s.all?.draw.toString(),
@@ -149,7 +155,8 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         nome_time_fora = m.awayTeam?.team_name,
                         logo_time_fora = m.awayTeam?.logo,
                         tempo = m.tempo.toString(),
-                        placar = m.score?.fulltime
+                        placar = m.score?.fulltime,
+                        eventos = null
                     )
                     result.add(domain)
 
@@ -160,39 +167,62 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
             override fun onFailure(call: Call<MatchesAPIDTO>, t: Throwable) {
                callback(arrayOf())
             }
+
+
+
         })
+
     }
 
-    fun Nextmatches(LeagueId: Int, number: Int, callback: (Proximosjogos: Array<Match>) -> Unit){
-
-        serviceNextMatches.matchesProximas(LeagueId, number).enqueue(object: Callback<MatchesAPIDTO> {
+    fun currentMatches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
+        servicecurrentMatches.currentMatches(LeagueId).enqueue(object: Callback<MatchesAPIDTO>{
 
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures
-                var result =  mutableListOf<Match>()
+                val result = mutableListOf<Match>()
+                val evento = mutableListOf<Evento>()
 
                 matches?.forEach { m ->
+                    m.events?.forEach { e ->
+                        val newEvent = Evento(
+                            evento_acrescimo = e.acrescimo.toString(),
+                            evento_tempo = e.tempo.toString(),
+                            evento_type = e.type,
+                            evento_detail = e.detail,
+                            evento_assist = e.assist,
+                            evento_comments = e.comments,
+                            evento_player = e.player,
+                            evento_teamName = e.teamName
+                        )
+                        evento.add(newEvent)
+                    }
                     val domain = Match(
                         data = m.data,
                         rodada = m.round,
+                        status = m.status,
                         nome_time_casa = m.homeTeam?.team_name,
-                        logo_time_casa = m.homeTeam?.logo,
+                        logo_time_casa = m.awayTeam?.logo,
                         nome_time_fora = m.awayTeam?.team_name,
-                        logo_time_fora = m.awayTeam?.logo
+                        logo_time_fora = m.awayTeam?.logo,
+                        placar = m.score?.fulltime,
+                        placar_intervalo = m.score?.halftime,
+                        placar_prorrogacao = m.score?.extratime,
+                        placar_penaltis = m.score?.penalty,
+                        tempo = m.tempo.toString(),
+                        eventos = evento.toTypedArray()
                     )
                     result.add(domain)
-
                 }
-                callback(result.toTypedArray())
+                    callback(result.toTypedArray())
             }
 
             override fun onFailure(call: Call<MatchesAPIDTO>, t: Throwable) {
                 callback(arrayOf())
             }
         })
+
+
     }
-
-
 }
 
 

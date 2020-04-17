@@ -15,6 +15,7 @@ data class AllDTO(
 
 data class TeamRankedDTO(
     val rank: Int? = null,
+    val team_id: Int? = null,
     val logo: String? = null,
     val teamName: String? = null,
     val all: AllDTO? = null,
