@@ -17,13 +17,23 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         interactor.teams(LeagueId){ t ->
             val times = mutableListOf<Team>()
 
+            var fundacao: String = "Desconhecido"
+            var estadio = "Desconhecido"
+
             t.forEach { team ->
+                if(!team.fundacao.isNullOrBlank()){
+                    fundacao = team.fundacao
+                }
+                if(!team.estadio.isNullOrBlank()){
+                    estadio = team.estadio
+                }
+
                 val newTime = Team(
                     name = "Nome: ${team.name}",
                     logo = team.logo,
                     country = "País: ${team.country}",
-                    estadio = "Estádio: ${team.estadio}",
-                    fundacao = "Fundação: ${team.fundacao}"
+                    estadio = "Estádio: ${estadio}",
+                    fundacao = "Fundação: ${fundacao}"
                 )
                 times.add(newTime)
             }
@@ -45,7 +55,7 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     empates = "Empates: ${team.empates}",
                     derrotas = "Derrotas: ${team.derrotas}",
                     pontos = "Pontos : ${team.pontos}",
-                    grupo = "Grupo: ${team.grupo}",
+                    grupo = "${team.grupo}",
                     saldo = "Saldo de gols: ${team.saldo}",
                     escudo = team.escudo
 
@@ -67,10 +77,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
             m.forEach{ match ->
 
                 if(!match.arbitro.isNullOrBlank()){
-                    arbitro = match.arbitro.toString()
+                    arbitro = match.arbitro
                 }
                 if(!match.estadio.isNullOrBlank()){
-                    estadio = match.estadio.toString()
+                    estadio = match.estadio
                 }
 
                 val newMatch = Match(
@@ -119,10 +129,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     }
 
                     if(!m.arbitro.isNullOrBlank()){
-                        arbitro = m.arbitro.toString()
+                        arbitro = m.arbitro
                     }
                     if(!m.estadio.isNullOrBlank()){
-                        estadio = m.estadio.toString()
+                        estadio = m.estadio
                     }
 
                     val domain = Match(
@@ -168,10 +178,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 m.forEach{ match ->
 
                     if(!match.arbitro.isNullOrBlank()){
-                        arbitro = match.arbitro.toString()
+                        arbitro = match.arbitro
                     }
                     if(!match.estadio.isNullOrBlank()){
-                        estadio = match.estadio.toString()
+                        estadio = match.estadio
                     }
 
                     val newMatch = Match(
@@ -207,10 +217,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     tempo = match.tempo.toString()
                 }
                 if(!match.arbitro.isNullOrBlank()){
-                    arbitro = match.arbitro.toString()
+                    arbitro = match.arbitro
                 }
                 if(!match.estadio.isNullOrBlank()){
-                    estadio = match.estadio.toString()
+                    estadio = match.estadio
                 }
 
                 val newMatch = Match(
