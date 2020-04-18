@@ -19,7 +19,7 @@ class FirebaseInteractor(private val context : Context) {
                 return true
             }
         }else{
-            return false
+            return true
         }
 
         return false
