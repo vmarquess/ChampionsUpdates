@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,6 +18,7 @@
             android:maxWidth="100dp"
             android:maxHeight="100dp"
             android:scaleType="fitXY"
+            android:contentDescription="@string/logo_do_time_da_casa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -72,6 +71,7 @@
             app:layout_constraintTop_toBottomOf="@id/placar"
             app:layout_constraintVertical_bias="0.25" />
 
+
         <ImageView
             android:id="@+id/logoFora"
             android:layout_width="122dp"
@@ -81,6 +81,7 @@
             android:maxWidth="100dp"
             android:maxHeight="100dp"
             android:scaleType="fitXY"
+            android:contentDescription="@string/logo_do_time_de_fora"
             app:layout_constraintBottom_toBottomOf="@id/separador"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/logoCasa"
@@ -107,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_marginStart="110dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="104dp"
             android:layout_marginEnd="110dp"
             android:background="@color/Branco"
             app:layout_constraintEnd_toEndOf="parent"
@@ -170,8 +171,8 @@
 
         <ScrollView
             android:id="@+id/scroll"
-            android:layout_width="407dp"
-            android:layout_height="181dp"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="@id/separador2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,12 +192,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/status" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
         </ScrollView>
 
+        <TextView
+            android:id="@+id/arbitro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="29dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/nomeFora"
+            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintStart_toEndOf="@+id/nomeCasa"
+            app:layout_constraintTop_toBottomOf="@+id/tempo" />
+
+        <TextView
+            android:id="@+id/estadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/separador"
+            app:layout_constraintEnd_toStartOf="@+id/nomeFora"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toEndOf="@+id/nomeCasa"
+            app:layout_constraintTop_toBottomOf="@+id/arbitro"
+            app:layout_constraintVertical_bias="0.647" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.view.activities
+package br.com.victoriasantos.libertadoresupdates.view.activities.cadastro_login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import br.com.victoriasantos.libertadoresupdates.R
+import br.com.victoriasantos.libertadoresupdates.view.activities.MainActivity
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FirebaseViewModel
 
 import kotlinx.android.synthetic.main.activity_login.*

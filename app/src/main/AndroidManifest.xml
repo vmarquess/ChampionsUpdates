@@ -11,18 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activities.JogosAcontecendoActivity"></activity>
-        <activity android:name=".view.activities.JogosAnterioresActivity" />
-        <activity android:name=".view.activities.ProximosJogosActivity" />
-        <activity android:name=".JogosAnterioresActivity" />
-        <activity android:name=".view.activities.activity_proximos_jogos" />
-        <activity android:name=".view.activities.JogosActivity" />
+        <activity android:name=".view.activities.jogos.JogosAcontecendoActivity"></activity>
+        <activity android:name=".view.activities.jogos.JogosAnterioresActivity" />
+        <activity android:name=".view.activities.jogos.ProximosJogosActivity" />
+        <activity android:name=".view.activities.jogos.JogosActivity" />
         <activity android:name=".view.activities.TimesActivity" />
         <activity android:name=".view.activities.GruposActivity" />
         <activity android:name=".view.activities.ProfileActivity" />
-        <activity android:name=".view.activities.RecuperacaoSenhaActivity" />
-        <activity android:name=".view.activities.CadastroActivity" />
-        <activity android:name=".view.activities.LoginActivity">
+        <activity android:name=".view.activities.cadastro_login.RecuperacaoSenhaActivity" />
+        <activity android:name=".view.activities.cadastro_login.CadastroActivity" />
+        <activity android:name=".view.activities.cadastro_login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

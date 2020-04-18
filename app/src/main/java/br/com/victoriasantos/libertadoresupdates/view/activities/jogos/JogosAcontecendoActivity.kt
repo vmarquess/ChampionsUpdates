@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.view.activities
+package br.com.victoriasantos.libertadoresupdates.view.activities.jogos
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -34,19 +34,13 @@ class JogosAcontecendoActivity : AppCompatActivity() {
                 if(mensagem.isNullOrBlank()){
                     val adapter = JogosAcontecendoAdapter(m)
                     JogosAcontecendoRecyclerView.adapter = adapter
-
                 }
                 else {
                     Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show()
                     startActivity(Intent(this, JogosActivity::class.java))
                     finish()
                 }
-
             }
-
         }
-
-
-
     }
 

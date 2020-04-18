@@ -13,6 +13,8 @@ data class Match(
     val placar_prorrogacao: String? = null,
     val placar_penaltis: String? = null,
     val tempo: String? = null,
+    val estadio : String? = null,
+    val arbitro : String? = null,
     val eventos: Array<Evento>?
 )
 

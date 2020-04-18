@@ -35,6 +35,7 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
         interactor.table(LeagueId) { t ->
             val tabela = mutableListOf<TeamRanked>()
+
             t.forEach { team ->
                 val newRakedTeam = TeamRanked(
                     rank = "Posição: ${team.rank}º",
@@ -57,8 +58,21 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
         interactor.matches(LeagueId){ m ->
+
+            var arbitro = "Indefinido"
+            var estadio = "Indefinido"
+
             val matches = mutableListOf<Match>()
+
             m.forEach{ match ->
+
+                if(!match.arbitro.isNullOrBlank()){
+                    arbitro = match.arbitro.toString()
+                }
+                if(!match.estadio.isNullOrBlank()){
+                    estadio = match.estadio.toString()
+                }
+
                 val newMatch = Match(
                     data = "Data: ${match.data}",
                     rodada = "Rodada: ${match.rodada}",
@@ -69,6 +83,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     logo_time_fora = match.logo_time_fora,
                     tempo = "${match.tempo}'",
                     placar = match.placar,
+                    arbitro = "Árbitro: ${arbitro}",
+                    estadio = "Estádio: ${estadio}",
                     eventos = null
                 )
                 matches.add(newMatch)
@@ -80,6 +96,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
     fun currentMatches(LeagueId: Int, callback: (jogos: Array<Match>, mensagem: String?) -> Unit){
         interactor.currentMatches(LeagueId){ j, flag ->
             if (flag){
+
+                var arbitro = "Indefinido"
+                var estadio = "Indefinido"
+
                 val matches = mutableListOf<Match>()
                 val evento = mutableListOf<Evento>()
 
@@ -97,6 +117,14 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                         )
                         evento.add(newEvent)
                     }
+
+                    if(!m.arbitro.isNullOrBlank()){
+                        arbitro = m.arbitro.toString()
+                    }
+                    if(!m.estadio.isNullOrBlank()){
+                        estadio = m.estadio.toString()
+                    }
+
                     val domain = Match(
                         data = "Data: ${m.data}",
                         rodada = "Rodada: ${m.rodada}",
@@ -110,6 +138,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                         placar_prorrogacao = "Placar prorrogação ${m.placar_prorrogacao}",
                         placar_penaltis = "Placar penaltis ${m.placar_penaltis}",
                         tempo = "${m.tempo}'",
+                        arbitro = "Árbitro: ${arbitro} ",
+                        estadio ="Estádio: ${estadio}" ,
                         eventos = evento.toTypedArray()
                     )
                     matches.add(domain)
@@ -130,8 +160,20 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 callback(m,app.applicationContext.getString(R.string.empty_jogos_futuros))
             }
             else{
+                var arbitro = "Indefinido"
+                var estadio = "Indefinido"
+
                 val matches = mutableListOf<Match>()
+
                 m.forEach{ match ->
+
+                    if(!match.arbitro.isNullOrBlank()){
+                        arbitro = match.arbitro.toString()
+                    }
+                    if(!match.estadio.isNullOrBlank()){
+                        estadio = match.estadio.toString()
+                    }
+
                     val newMatch = Match(
                         data = "Data: ${match.data}",
                         rodada = "Rodada: ${match.rodada}",
@@ -139,10 +181,11 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                         logo_time_casa = match.logo_time_casa,
                         nome_time_fora = match.nome_time_fora,
                         logo_time_fora = match.logo_time_fora,
+                        arbitro = "Árbitro: ${arbitro}",
+                        estadio = "Estádio: ${estadio}",
                         eventos = null
                     )
                     matches.add(newMatch)
-
                 }
                 callback(matches.toTypedArray(), null)
             }
@@ -151,8 +194,25 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
     fun lastMatches(LeagueId: Int, number: Int, callback: (jogos: Array<Match>) -> Unit){
         interactor.lastMatches(LeagueId, number){ m ->
+
+            var tempo = "Cancelado"
+            var arbitro = "Indefinido"
+            var estadio = "Indefinido"
+
             val matches = mutableListOf<Match>()
+
             m.forEach{ match ->
+
+                if(!match.tempo.equals("0")) {
+                    tempo = match.tempo.toString()
+                }
+                if(!match.arbitro.isNullOrBlank()){
+                    arbitro = match.arbitro.toString()
+                }
+                if(!match.estadio.isNullOrBlank()){
+                    estadio = match.estadio.toString()
+                }
+
                 val newMatch = Match(
                     data = "Data: ${match.data}",
                     rodada = "Rodada: ${match.rodada}",
@@ -161,8 +221,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     logo_time_casa = match.logo_time_casa,
                     nome_time_fora = match.nome_time_fora,
                     logo_time_fora = match.logo_time_fora,
-                    tempo = "${match.tempo}'",
+                    tempo = "${tempo}'",
                     placar = match.placar,
+                    arbitro = "Árbitro: ${arbitro}",
+                    estadio = "Estádio: ${estadio}",
                     eventos = null
                 )
                 matches.add(newMatch)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.JogosActivity"
+    tools:context=".view.activities.jogos.JogosActivity"
     android:background="@drawable/mainbackground">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Todos os jogos"
+        android:text="@string/titulo_jogos_pag"
         android:textColor="@color/Branco"
         android:fontFamily="@font/faster_one"
         android:textSize="32sp"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
         android:layout_marginStart="50dp"
-        android:text="Próximos jogos"
+        android:text="@string/proximos_jogos_botao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/JogosRecyclerView" />
 
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="50dp"
-        android:text="Jogos Passados"
+        android:text="@string/jogos_passados_botao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/JogosRecyclerView" />
 
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
         android:layout_marginBottom="50dp"
-        android:text="Jogos Acontecendo"
+        android:text="@string/jogos_acontecendo_botao"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

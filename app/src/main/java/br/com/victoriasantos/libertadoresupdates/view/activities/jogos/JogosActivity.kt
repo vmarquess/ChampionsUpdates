@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.view.activities
+package br.com.victoriasantos.libertadoresupdates.view.activities.jogos
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +32,6 @@ class JogosActivity : AppCompatActivity() {
         jogosNow.setOnClickListener{
             startActivity(Intent(this, JogosAcontecendoActivity::class.java))
             finish()
-
         }
     }
 

@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class MatchesAPIDTO(
    val api: MatchesList
-
 )
 
 data class Team(
@@ -29,8 +28,11 @@ data class Match(
     @SerializedName("elapsed")
     val tempo: Int? = null,
     val score: Score? = null,
+    @SerializedName("venue")
+    val estadio : String? = null,
+    @SerializedName("referee")
+    val arbitro : String? = null,
     val events: Array<Event>? = null
-
 )
 
 data class Event(
@@ -45,7 +47,6 @@ data class Event(
     val detail: String? = null,
     val comments: String? = null
 )
-
 
 data class MatchesList(
     val fixtures: Array<Match>? = null

@@ -25,7 +25,6 @@ interface TimeInterfaceRepository{
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TimeAPIDTO>
-
 }
 
 interface TabelaInterfaceRepository {
@@ -36,7 +35,6 @@ interface TabelaInterfaceRepository {
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<TableAPIDTO>
-
 }
 
 interface JogosInterface{
@@ -52,7 +50,7 @@ interface JogosInterface{
 
 interface JogosAcontecendoInterface{
 
-    @GET("fixtures/league/live/{LeagueId}")
+    @GET("fixtures/live/{LeagueId}")
     fun currentMatches(
         @Path("LeagueId") LeagueId: Int,
         @Query("timezone") Timezone: String = "America/Sao_Paulo",
@@ -94,14 +92,13 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
     private val serviceLastMatches = retrofit.create(JogosAnterioresInterface::class.java)
 
 
-
     fun teams(LeagueId: Int,callback: (times: Array<Team>) -> Unit) {
 
         serviceTeams.teams(LeagueId).enqueue(object : Callback<TimeAPIDTO> {
 
             override fun onResponse(call: Call<TimeAPIDTO>, response: Response<TimeAPIDTO>) {
                 val times = response.body()?.api?.teams
-                var result = mutableListOf<Team>()
+                val result = mutableListOf<Team>()
 
                 times?.forEach { t ->
                     val domain = Team(
@@ -130,11 +127,11 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
             override fun onResponse(call: Call<TableAPIDTO>, response: Response<TableAPIDTO>) {
                 val teams = response.body()?.api?.standings
-                var result = mutableListOf<TeamRanked>()
+                val result = mutableListOf<TeamRanked>()
 
                 teams?.forEach { t ->
                     t.forEach { s ->
-                        var saldo: Int? = s.all?.goalsFor?.minus(s.all.goalsAgainst)
+                        val saldo: Int? = s.all?.goalsFor?.minus(s.all.goalsAgainst)
                         val domain = TeamRanked(
                             rank = s.rank.toString(),
                             escudo = s.logo,
@@ -167,7 +164,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures
-                var result =  mutableListOf<Match>()
+                val result =  mutableListOf<Match>()
 
                 matches?.forEach { m ->
                     val domain = Match(
@@ -180,6 +177,8 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         logo_time_fora = m.awayTeam?.logo,
                         tempo = m.tempo.toString(),
                         placar = m.score?.fulltime,
+                        arbitro = m.arbitro,
+                        estadio = m.estadio,
                         eventos = null
                     )
                     result.add(domain)
@@ -218,24 +217,26 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         )
                         evento.add(newEvent)
                     }
-                    val domain = Match(
-                        data = m.data,
-                        rodada = m.round,
-                        status = m.status,
-                        nome_time_casa = m.homeTeam?.team_name,
-                        logo_time_casa = m.awayTeam?.logo,
-                        nome_time_fora = m.awayTeam?.team_name,
-                        logo_time_fora = m.awayTeam?.logo,
-                        placar = m.score?.fulltime,
-                        placar_intervalo = m.score?.halftime,
-                        placar_prorrogacao = m.score?.extratime,
-                        placar_penaltis = m.score?.penalty,
-                        tempo = m.tempo.toString(),
-                        eventos = evento.toTypedArray()
-                    )
+                        val domain = Match(
+                            data = m.data,
+                            rodada = m.round,
+                            status = m.status,
+                            nome_time_casa = m.homeTeam?.team_name,
+                            logo_time_casa = m.awayTeam?.logo,
+                            nome_time_fora = m.awayTeam?.team_name,
+                            logo_time_fora = m.awayTeam?.logo,
+                            placar = m.score?.fulltime,
+                            placar_intervalo = m.score?.halftime,
+                            placar_prorrogacao = m.score?.extratime,
+                            placar_penaltis = m.score?.penalty,
+                            tempo = m.tempo.toString(),
+                            arbitro = m.arbitro,
+                            estadio = m.estadio,
+                            eventos = evento.toTypedArray()
+                        )
                     result.add(domain)
                 }
-                    callback(result.toTypedArray())
+                callback(result.toTypedArray())
             }
 
             override fun onFailure(call: Call<MatchesAPIDTO>, t: Throwable) {
@@ -250,7 +251,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures
-                var result =  mutableListOf<Match>()
+                val result =  mutableListOf<Match>()
 
                 matches?.forEach { m ->
                     val domain = Match(
@@ -260,6 +261,8 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         logo_time_casa = m.homeTeam?.logo,
                         nome_time_fora = m.awayTeam?.team_name,
                         logo_time_fora = m.awayTeam?.logo,
+                        arbitro = m.arbitro,
+                        estadio = m.estadio,
                         eventos = null
                     )
                     result.add(domain)
@@ -280,7 +283,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures
-                var result =  mutableListOf<Match>()
+                val result =  mutableListOf<Match>()
 
                 matches?.forEach { m ->
                     val domain = Match(
@@ -293,6 +296,8 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         logo_time_fora = m.awayTeam?.logo,
                         tempo = m.tempo.toString(),
                         placar = m.score?.fulltime,
+                        arbitro = m.arbitro,
+                        estadio = m.estadio,
                         eventos = null
                     )
                     result.add(domain)

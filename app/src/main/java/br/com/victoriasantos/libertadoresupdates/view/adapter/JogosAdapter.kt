@@ -35,6 +35,8 @@ class JogosAdapter(private val dataSet: Array<Match>) : RecyclerView.Adapter<Jog
         holder.tempo.text = match.tempo
         holder.status.text = match.status
         holder.data.text = match.data
+        holder.arbitro.text = match.arbitro
+        holder.estadio.text = match.estadio
     }
 
     class JogosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -47,5 +49,7 @@ class JogosAdapter(private val dataSet: Array<Match>) : RecyclerView.Adapter<Jog
         val status: TextView = itemView.status
         val data: TextView = itemView.data
         val rodada: TextView = itemView.rodada
+        val arbitro: TextView = itemView.arbitro
+        val estadio: TextView = itemView.estadio
     }
 }

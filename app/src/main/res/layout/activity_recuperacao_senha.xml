@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.RecuperacaoSenhaActivity"
+    tools:context=".view.activities.cadastro_login.RecuperacaoSenhaActivity"
     android:background="@drawable/mainbackground">
 
     <androidx.constraintlayout.widget.Guideline
@@ -41,7 +41,7 @@
         android:layout_height="108dp"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="Informe o e-mail para a recuperação de senha"
+        android:text="@string/titulo_recup_senha"
         android:textColor="@color/Branco"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
@@ -55,7 +55,8 @@
         android:layout_height="40dp"
         android:layout_marginTop="120dp"
         android:gravity="bottom"
-        android:hint="E-mail"
+        android:hint="@string/e_mail"
+        android:autofillHints="@string/e_mail"
         android:inputType="textEmailAddress"
         android:textColor="@color/Branco"
         android:textColorHint="@color/Branco"
@@ -70,7 +71,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Enviar"
+        android:text="@string/enviar"
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
         app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
         tools:layout_editor_absoluteY="432dp"

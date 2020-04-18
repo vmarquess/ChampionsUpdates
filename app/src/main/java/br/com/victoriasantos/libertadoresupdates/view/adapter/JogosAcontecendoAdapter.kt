@@ -34,6 +34,9 @@ class JogosAcontecendoAdapter(private val dataSet: Array<Match>) : RecyclerView.
         holder.tempo.text = match.tempo
         holder.status.text = match.status
         holder.data.text = match.data
+        holder.arbitro.text = match.arbitro
+        holder.estadio.text = match.estadio
+
         var str = ""
         match.eventos?.forEach { e ->
             str =
@@ -55,6 +58,8 @@ class JogosAcontecendoAdapter(private val dataSet: Array<Match>) : RecyclerView.
         val data: TextView = itemView.data
         val rodada: TextView = itemView.rodada
         val eventos: TextView = itemView.eventos
+        val arbitro: TextView = itemView.arbitro
+        val estadio: TextView = itemView.estadio
     }
 
 }

@@ -47,7 +47,7 @@ class FirebaseInteractor(private val context : Context) {
     }
 
     fun changePassword(email: String, callback: (result: String) -> Unit){
-        if(email != ""){
+        if(!this.campoVazio(email)){
             repository.changePassword(email)
             callback("EMAIL SENT")
         }
@@ -87,7 +87,7 @@ class FirebaseInteractor(private val context : Context) {
                 val email = emailCampo
                 repository.updateEmail(email) { result ->
                     if (result == "S") {
-                        if (email.isNotEmpty()) {
+                        if (!this.campoVazio(email)) {
                             repository.saveData(email, nome, telefone, time, callback)
                         } else {
                             callback("EMPTY DATA")
@@ -101,7 +101,7 @@ class FirebaseInteractor(private val context : Context) {
             }
             else{
                 val email = emailCampo
-                if (email.isNotEmpty()) {
+                if (!this.campoVazio(email)) {
                     repository.saveData(email, nome, telefone, time, callback)
                 } else {
                     callback("EMPTY DATA")
