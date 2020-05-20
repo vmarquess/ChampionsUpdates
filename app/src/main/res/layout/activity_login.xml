@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.cadastro_login.LoginActivity"
+    tools:context=".view.activities.registerAndLogin.LoginActivity"
     android:background="@drawable/mainbackground">
 
     <androidx.constraintlayout.widget.Guideline
@@ -116,16 +116,6 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_direito"
         app:layout_constraintTop_toBottomOf="@id/bt_login"/>
 
-    <Button
-        android:id="@+id/bt_cadastro"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/cadastrar"
-        app:layout_constraintEnd_toStartOf="@id/guideline_direito"
-        app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
-        app:layout_constraintTop_toBottomOf="@id/texto_ou" />
-
     <TextView
         android:id="@+id/titulo"
         android:layout_width="0dp"
@@ -140,6 +130,16 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0.262" />
+
+    <Button
+        android:id="@+id/bt_cadastro"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cadastrar"
+        app:layout_constraintEnd_toStartOf="@id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@id/guideline_esquerdo"
+        app:layout_constraintTop_toBottomOf="@id/texto_ou" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

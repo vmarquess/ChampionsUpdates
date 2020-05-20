@@ -23,7 +23,7 @@ class FootballAPIInteractor(private val context: Context) {
     }
 
     fun currentMatches(LeagueId: Int, callback: (jogos: Array<Match>, flag: Boolean) -> Unit){
-        repository.currentMatches(LeagueId){jogos ->
+        repository.currentMatches(LeagueId){ jogos ->
             if (jogos.isNullOrEmpty()){
                 callback(jogos, false)
             }

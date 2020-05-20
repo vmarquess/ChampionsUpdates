@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.activities.jogos.JogosActivity
+import br.com.victoriasantos.libertadoresupdates.view.activities.matches.JogosActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

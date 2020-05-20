@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.view.activities.jogos
+package br.com.victoriasantos.libertadoresupdates.view.activities.matches
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

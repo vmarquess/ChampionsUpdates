@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.view.activities.cadastro_login
+package br.com.victoriasantos.libertadoresupdates.view.activities.registerAndLogin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
