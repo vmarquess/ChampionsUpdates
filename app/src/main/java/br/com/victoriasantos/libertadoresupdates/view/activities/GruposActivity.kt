@@ -2,6 +2,8 @@ package br.com.victoriasantos.libertadoresupdates.view.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,7 @@ class GruposActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grupos)
+        pBar.visibility = GONE
 
         configureRecyclerView()
         showTable()
@@ -30,9 +33,11 @@ class GruposActivity : AppCompatActivity() {
     }
 
     private fun showTable(){
+        pBar.visibility = VISIBLE
         viewModel.table(530){ tabela ->
             val adapter = TabelaAdapter(tabela)
             TabelaRecyclerView.adapter = adapter
+            pBar.visibility = GONE
         }
 
     }

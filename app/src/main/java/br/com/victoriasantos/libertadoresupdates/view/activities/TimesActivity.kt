@@ -2,6 +2,8 @@ package br.com.victoriasantos.libertadoresupdates.view.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
@@ -20,15 +22,18 @@ class TimesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_times)
+        pBar.visibility = GONE
 
         configureRecyclerView()
         showTeams()
     }
 
     private fun showTeams(){
+        pBar.visibility = VISIBLE
         viewModel.teams(530) { times ->
             val adapter = TimeAdapter(times)
             TimesRecyclerView.adapter = adapter
+            pBar.visibility = GONE
 
         }
 

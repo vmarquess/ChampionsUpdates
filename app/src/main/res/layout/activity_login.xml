@@ -7,6 +7,18 @@
     tools:context=".view.activities.registerAndLogin.LoginActivity"
     android:background="@drawable/mainbackground">
 
+    <ProgressBar
+        android:id="@+id/pBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="124dp"
+        android:layout_height="103dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_baixo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
+        app:layout_constraintTop_toTopOf="@+id/guideline_acima"
+        app:layout_constraintVertical_bias="0.554"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_esquerdo"
         android:layout_width="wrap_content"

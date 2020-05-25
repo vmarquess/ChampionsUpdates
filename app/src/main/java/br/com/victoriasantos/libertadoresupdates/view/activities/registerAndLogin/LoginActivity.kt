@@ -3,6 +3,8 @@ package br.com.victoriasantos.libertadoresupdates.view.activities.registerAndLog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import br.com.victoriasantos.libertadoresupdates.R
@@ -20,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        pBar.visibility = GONE
 
         bt_cadastro.setOnClickListener { cadastrar() }
         esqueci_senha.setOnClickListener { esqueciSenha() }
@@ -28,12 +31,13 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun login() {
+        pBar.visibility = VISIBLE
         val email = campoEmail.text.toString()
         val senha = campoSenha.text.toString()
 
         viewModel.acaoFirebaseUsuario(email, senha,1) { result, id ->
+            pBar.visibility = GONE
             Toast.makeText(this, result, Toast.LENGTH_LONG).show()
-
             if (id == 1) {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
@@ -42,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun cadastrar() {
-        startActivity(Intent(this, CadastroActivity::class.java))
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 
     private fun esqueciSenha() {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.victoriasantos.libertadoresupdates">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".view.activities.ChatBotActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,16 +31,16 @@
 
         <activity
             android:name=".view.activities.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".view.activities.matches.JogosAcontecendoActivity" />
-        <activity android:name=".view.activities.matches.JogosAnterioresActivity" />
-        <activity android:name=".view.activities.matches.ProximosJogosActivity" />
-        <activity android:name=".view.activities.matches.JogosActivity" />
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".view.activities.matches.OnGoingMatchesActivity" />
+        <activity android:name=".view.activities.matches.PastMatchesActivity" />
+        <activity android:name=".view.activities.matches.NextMatchesActivity" />
+        <activity android:name=".view.activities.matches.MatchesActivity" />
         <activity android:name=".view.activities.TimesActivity" />
         <activity android:name=".view.activities.GruposActivity" />
         <activity android:name=".view.activities.ProfileActivity" />
         <activity android:name=".view.activities.registerAndLogin.RecuperacaoSenhaActivity" />
-        <activity android:name=".view.activities.registerAndLogin.CadastroActivity" />
+        <activity android:name=".view.activities.registerAndLogin.RegisterActivity" />
         <activity android:name=".view.activities.registerAndLogin.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -33,4 +33,6 @@
     <string name="vs">vs</string>
     <string name="logo">logo</string>
     <string name="title_activity_maps">Map</string>
+    <string name="conection_error">Erro. Verifique sua conexão com a internet.</string>
+    <string name="you">Você</string>
 </resources>

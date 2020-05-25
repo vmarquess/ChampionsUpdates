@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.registerAndLogin.CadastroActivity"
+    tools:context=".view.activities.registerAndLogin.RegisterActivity"
     android:background="@drawable/mainbackground">
 
     <androidx.constraintlayout.widget.Guideline
@@ -13,6 +13,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="22dp" />
+
+    <ProgressBar
+        android:id="@+id/pBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="124dp"
+        android:layout_height="103dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_baixo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_direito"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/guideline_esquerdo"
+        app:layout_constraintTop_toTopOf="@+id/guideline_acima"
+        app:layout_constraintVertical_bias="0.294"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_direito"

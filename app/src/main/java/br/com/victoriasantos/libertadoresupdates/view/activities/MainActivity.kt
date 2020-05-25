@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.activities.matches.JogosActivity
+import br.com.victoriasantos.libertadoresupdates.view.activities.matches.MatchesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         derrotas.setOnClickListener {
-            startActivity(Intent(this, JogosActivity::class.java))
+            startActivity(Intent(this, MatchesActivity::class.java))
         }
 
         perfil.setOnClickListener{

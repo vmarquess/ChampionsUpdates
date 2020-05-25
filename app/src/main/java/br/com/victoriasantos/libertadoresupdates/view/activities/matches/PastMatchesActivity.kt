@@ -2,14 +2,16 @@ package br.com.victoriasantos.libertadoresupdates.view.activities.matches
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.view.adapter.JogosAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
-import kotlinx.android.synthetic.main.activity_jogos_anteriores.*
+import kotlinx.android.synthetic.main.activity_past_matches.*
 
-class JogosAnterioresActivity : AppCompatActivity() {
+class PastMatchesActivity : AppCompatActivity() {
 
     private val viewModel: FootballAPIViewModel by lazy{
         ViewModelProvider(this).get(FootballAPIViewModel::class.java)
@@ -17,7 +19,8 @@ class JogosAnterioresActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jogos_anteriores)
+        setContentView(R.layout.activity_past_matches)
+        pBar.visibility = GONE
 
         configureRecyclerView()
         showMatches()
@@ -28,9 +31,11 @@ class JogosAnterioresActivity : AppCompatActivity() {
     }
 
     fun showMatches(){
+        pBar.visibility = VISIBLE
         viewModel.lastMatches(530,20){ matches ->
             val adapter = JogosAdapter(matches)
             jogosAnt_Recycleview.adapter = adapter
+            pBar.visibility = GONE
 
         }
     }
