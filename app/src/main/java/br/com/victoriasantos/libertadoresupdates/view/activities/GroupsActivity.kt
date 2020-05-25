@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.view.adapter.TabelaAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
-import kotlinx.android.synthetic.main.activity_grupos.*
+import kotlinx.android.synthetic.main.activity_groups.*
 
-class GruposActivity : AppCompatActivity() {
+class GroupsActivity : AppCompatActivity() {
 
     private val viewModel: FootballAPIViewModel by lazy {
         ViewModelProvider(this). get(FootballAPIViewModel::class.java)
@@ -20,7 +19,7 @@ class GruposActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_grupos)
+        setContentView(R.layout.activity_groups)
         pBar.visibility = GONE
 
         configureRecyclerView()

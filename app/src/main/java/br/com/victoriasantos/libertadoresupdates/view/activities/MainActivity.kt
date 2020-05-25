@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         grupos.setOnClickListener {
-            startActivity(Intent(this, GruposActivity::class.java))
+            startActivity(Intent(this, GroupsActivity::class.java))
         }
 
         derrotas.setOnClickListener {

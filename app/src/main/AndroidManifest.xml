@@ -37,7 +37,7 @@
         <activity android:name=".view.activities.matches.NextMatchesActivity" />
         <activity android:name=".view.activities.matches.MatchesActivity" />
         <activity android:name=".view.activities.TimesActivity" />
-        <activity android:name=".view.activities.GruposActivity" />
+        <activity android:name=".view.activities.GroupsActivity" />
         <activity android:name=".view.activities.ProfileActivity" />
         <activity android:name=".view.activities.registerAndLogin.RecuperacaoSenhaActivity" />
         <activity android:name=".view.activities.registerAndLogin.RegisterActivity" />
