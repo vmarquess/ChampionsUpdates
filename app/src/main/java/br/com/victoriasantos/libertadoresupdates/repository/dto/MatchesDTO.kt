@@ -21,6 +21,8 @@ data class Score(
 data class Match(
     @SerializedName("event_date")
     val data: String? = null,
+    @SerializedName("fixture_id")
+    val id: Int? = null,
     val round: String? = null,
     val status: String? = null,
     val homeTeam: Team? = null,

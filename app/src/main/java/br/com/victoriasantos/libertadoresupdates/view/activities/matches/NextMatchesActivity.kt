@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.adapter.ProximosJogosAdapter
+import br.com.victoriasantos.libertadoresupdates.view.adapter.NextMatchesAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_next_matches.*
 
@@ -38,7 +38,7 @@ class NextMatchesActivity : AppCompatActivity() {
         viewModel.nextMatches(530,20) { Nextmatches, mensagem ->
 
             if(mensagem.isNullOrBlank()){
-                val adapter = ProximosJogosAdapter(Nextmatches)
+                val adapter = NextMatchesAdapter(Nextmatches)
                 jogosProximos_Recycleview.adapter = adapter
                 pBar.visibility = GONE
             }

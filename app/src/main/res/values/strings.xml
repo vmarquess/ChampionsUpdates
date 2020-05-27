@@ -35,4 +35,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="conection_error">Erro. Verifique sua conexão com a internet.</string>
     <string name="you">Você</string>
+    <string name="error">Não foi possível recuperar os dados</string>
 </resources>

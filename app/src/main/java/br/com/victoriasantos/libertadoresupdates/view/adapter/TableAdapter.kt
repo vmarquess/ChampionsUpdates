@@ -12,8 +12,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.ranked_time_item.view.*
 
 
-class TabelaAdapter (private val dataSet: Array<TeamRanked>) :
-RecyclerView.Adapter<TabelaAdapter.TabelaViewHolder>(){
+class TableAdapter (private val dataSet: Array<TeamRanked>) :
+RecyclerView.Adapter<TableAdapter.TabelaViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabelaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ranked_time_item, parent, false)

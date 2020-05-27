@@ -1,6 +1,7 @@
 package br.com.victoriasantos.libertadoresupdates.interactor
 
 import android.content.Context
+import br.com.victoriasantos.libertadoresupdates.domain.Location
 import br.com.victoriasantos.libertadoresupdates.domain.Profile
 import br.com.victoriasantos.libertadoresupdates.repository.FirebaseRepository
 
@@ -107,6 +108,23 @@ class FirebaseInteractor(private val context : Context) {
                     callback("EMPTY DATA")
                     // Todos os campos devem ser preenchidos!"
                 }
+            }
+        }
+    }
+
+    fun getMarkers(callback: (locations: Array<Location>?) -> Unit) {
+        repository.getMarkers { snapshot ->
+            val locations = mutableListOf<Location>()
+            if (snapshot != null && snapshot.hasChildren() == true) {
+                snapshot.children.forEach { l ->
+                    val location = l.getValue(Location::class.java)
+                    if (location != null) {
+                        locations.add(location)
+                    }
+                }
+                callback(locations.toTypedArray())
+            } else {
+                callback(null)
             }
         }
     }

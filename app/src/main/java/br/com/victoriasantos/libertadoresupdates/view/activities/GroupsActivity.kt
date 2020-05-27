@@ -7,7 +7,7 @@ import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.adapter.TabelaAdapter
+import br.com.victoriasantos.libertadoresupdates.view.adapter.TableAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_groups.*
 
@@ -34,7 +34,7 @@ class GroupsActivity : AppCompatActivity() {
     private fun showTable(){
         pBar.visibility = VISIBLE
         viewModel.table(530){ tabela ->
-            val adapter = TabelaAdapter(tabela)
+            val adapter = TableAdapter(tabela)
             TabelaRecyclerView.adapter = adapter
             pBar.visibility = GONE
         }

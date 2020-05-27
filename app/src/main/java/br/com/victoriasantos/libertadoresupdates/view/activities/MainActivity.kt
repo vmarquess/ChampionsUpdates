@@ -14,8 +14,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        mapbtn.setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
+
+        botbtn.setOnClickListener {
+            startActivity(Intent(this, ChatBotActivity::class.java))
+        }
+
         times.setOnClickListener {
-            startActivity(Intent(this, TimesActivity::class.java))
+            startActivity(Intent(this, TeamsActivity::class.java))
         }
 
         grupos.setOnClickListener {

@@ -3,10 +3,7 @@ package br.com.victoriasantos.libertadoresupdates.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.domain.Evento
-import br.com.victoriasantos.libertadoresupdates.domain.Match
-import br.com.victoriasantos.libertadoresupdates.domain.Team
-import br.com.victoriasantos.libertadoresupdates.domain.TeamRanked
+import br.com.victoriasantos.libertadoresupdates.domain.*
 import br.com.victoriasantos.libertadoresupdates.interactor.FootballAPIInteractor
 
 class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
@@ -240,6 +237,24 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 matches.add(newMatch)
             }
             callback(matches.toTypedArray())
+        }
+    }
+
+    fun showPlayers(id: String, season: Int, callback: (players: Array<Player>?) -> Unit){
+        interactor.showPlayers(id, season){ players ->
+            val aux = mutableListOf<Player>()
+
+            players?.forEach { p->
+                val player = Player(
+                    name = "Nome: ${p.name}\n",
+                    number = "Número: ${p.number}\n",
+                    age = "Idade: ${p.age}\n",
+                    nationality = "Nacionalidade: ${p.nationality}\n\n",
+                    position = "Posição: ${p.position}\n"
+                )
+                aux.add(player)
+            }
+            callback(aux.toTypedArray())
         }
     }
 

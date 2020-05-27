@@ -2,6 +2,7 @@ package br.com.victoriasantos.libertadoresupdates.interactor
 
 import android.content.Context
 import br.com.victoriasantos.libertadoresupdates.domain.Match
+import br.com.victoriasantos.libertadoresupdates.domain.Player
 import br.com.victoriasantos.libertadoresupdates.domain.Team
 import br.com.victoriasantos.libertadoresupdates.domain.TeamRanked
 import br.com.victoriasantos.libertadoresupdates.repository.FootballAPIRepository
@@ -46,5 +47,9 @@ class FootballAPIInteractor(private val context: Context) {
 
     fun lastMatches(LeagueId: Int, number: Int,callback: (jogos: Array<Match>) -> Unit) {
         repository.lastMatches(LeagueId,number, callback)
+    }
+
+    fun showPlayers(id: String, season: Int, callback: (players: Array<Player>?) -> Unit){
+        repository.players(id, season, callback)
     }
 }

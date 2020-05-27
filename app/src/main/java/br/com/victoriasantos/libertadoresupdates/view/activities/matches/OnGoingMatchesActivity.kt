@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.adapter.JogosAcontecendoAdapter
+import br.com.victoriasantos.libertadoresupdates.view.adapter.OnGoingMatchesAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_ongoing_matches.*
 
@@ -36,7 +36,7 @@ class OnGoingMatchesActivity : AppCompatActivity() {
         pBar.visibility = VISIBLE
         viewModel.currentMatches(530){ m, mensagem ->
                 if(mensagem.isNullOrBlank()){
-                    val adapter = JogosAcontecendoAdapter(m)
+                    val adapter = OnGoingMatchesAdapter(m)
                     JogosAcontecendoRecyclerView.adapter = adapter
                     pBar.visibility = GONE
                 }

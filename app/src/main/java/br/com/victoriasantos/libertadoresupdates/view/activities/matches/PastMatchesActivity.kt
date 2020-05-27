@@ -7,7 +7,7 @@ import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.adapter.JogosAdapter
+import br.com.victoriasantos.libertadoresupdates.view.adapter.MatchesAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_past_matches.*
 
@@ -33,7 +33,7 @@ class PastMatchesActivity : AppCompatActivity() {
     fun showMatches(){
         pBar.visibility = VISIBLE
         viewModel.lastMatches(530,20){ matches ->
-            val adapter = JogosAdapter(matches)
+            val adapter = MatchesAdapter(matches)
             jogosAnt_Recycleview.adapter = adapter
             pBar.visibility = GONE
 

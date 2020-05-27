@@ -108,5 +108,20 @@ class FirebaseRepository(context: Context){
 
     }
 
+    fun getMarkers(callback: (snapshot: DataSnapshot?) -> Unit) {
+
+        val ref = database.getReference("Location")
+
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                callback(null)
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                callback(snapshot)
+            }
+        })
+    }
+
 
 }

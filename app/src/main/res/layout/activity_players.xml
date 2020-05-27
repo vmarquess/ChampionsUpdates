@@ -4,28 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.TeamsActivity"
-    android:background="@drawable/mainbackground">
-
+    android:background="@drawable/mainbackground"
+    tools:context=".view.activities.PlayersActivity">
 
     <ProgressBar
         android:id="@+id/pBar"
         style="?android:attr/progressBarStyleLarge"
-        android:layout_width="136dp"
-        android:layout_height="123dp"
+        android:layout_width="152dp"
+        android:layout_height="134dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.36" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/TimesRecyclerView"
+    <TextView
+        android:id="@+id/playersTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="593dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/graduate"
+        android:textColor="@color/Branco"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintVertical_bias="0.69" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/graduate"
+        android:textColor="@color/Branco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -8,7 +8,7 @@ import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.view.adapter.JogosAdapter
+import br.com.victoriasantos.libertadoresupdates.view.adapter.MatchesAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_jogos.*
 
@@ -46,7 +46,7 @@ class MatchesActivity : AppCompatActivity() {
     fun showMatches(){
         pBar.visibility = VISIBLE
         viewModel.matches(530){ matches ->
-            val adapter = JogosAdapter(matches)
+            val adapter = MatchesAdapter(matches)
             JogosRecyclerView.adapter = adapter
             pBar.visibility = GONE
         }

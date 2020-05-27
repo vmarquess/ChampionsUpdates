@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.jogos_acontendo_item.view.*
 
 
-class JogosAcontecendoAdapter(private val dataSet: Array<Match>) : RecyclerView.Adapter<JogosAcontecendoAdapter.JogosAcontecendoViewHolder>() {
+class OnGoingMatchesAdapter(private val dataSet: Array<Match>) : RecyclerView.Adapter<OnGoingMatchesAdapter.JogosAcontecendoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JogosAcontecendoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.jogos_acontendo_item, parent, false)

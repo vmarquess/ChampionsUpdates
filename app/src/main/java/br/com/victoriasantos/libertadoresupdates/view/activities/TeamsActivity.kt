@@ -1,5 +1,6 @@
 package br.com.victoriasantos.libertadoresupdates.view.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.GONE
@@ -7,12 +8,11 @@ import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
-import br.com.victoriasantos.libertadoresupdates.interactor.FootballAPIInteractor
-import br.com.victoriasantos.libertadoresupdates.view.adapter.TimeAdapter
+import br.com.victoriasantos.libertadoresupdates.view.adapter.TeamAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_times.*
 
-class TimesActivity : AppCompatActivity() {
+class TeamsActivity : AppCompatActivity() {
 
     private val viewModel: FootballAPIViewModel by lazy {
         ViewModelProvider(this). get(FootballAPIViewModel::class.java)
@@ -31,12 +31,19 @@ class TimesActivity : AppCompatActivity() {
     private fun showTeams(){
         pBar.visibility = VISIBLE
         viewModel.teams(530) { times ->
-            val adapter = TimeAdapter(times)
+            val adapter = TeamAdapter(this, times)
             TimesRecyclerView.adapter = adapter
             pBar.visibility = GONE
 
         }
 
+    }
+
+    fun players(Id: String, nome: String){
+        val intent = Intent(this, PlayersActivity::class.java)
+        intent.putExtra("team_id", Id)
+        intent.putExtra("nome", nome)
+        startActivity(intent)
     }
 
     private fun configureRecyclerView() {
