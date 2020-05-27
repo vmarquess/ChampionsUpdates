@@ -241,14 +241,13 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun showPlayers(id: String, season: Int, callback: (players: Array<Player>?) -> Unit){
+    fun showPlayers(id: String, season: String, callback: (players: Array<Player>?) -> Unit){
         interactor.showPlayers(id, season){ players ->
             val aux = mutableListOf<Player>()
 
             players?.forEach { p->
                 val player = Player(
                     name = app.applicationContext.getString(R.string.nome) + p.name + "\n",
-                    number = app.applicationContext.getString(R.string.numero) + p.number + "\n",
                     age = app.applicationContext.getString(R.string.idade) + p.age + "\n",
                     nationality = app.applicationContext.getString(R.string.nacionalidade) + p.nationality + "\n\n",
                     position = app.applicationContext.getString(R.string.posicao)+ p.position + "\n"

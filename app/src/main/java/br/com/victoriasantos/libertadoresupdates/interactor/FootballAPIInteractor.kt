@@ -49,7 +49,7 @@ class FootballAPIInteractor(private val context: Context) {
         repository.lastMatches(LeagueId,number, callback)
     }
 
-    fun showPlayers(id: String, season: Int, callback: (players: Array<Player>?) -> Unit){
+    fun showPlayers(id: String, season: String, callback: (players: Array<Player>?) -> Unit){
         repository.players(id, season, callback)
     }
 }

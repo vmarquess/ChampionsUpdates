@@ -84,7 +84,7 @@ interface PlayersInterface{
     @GET("players/squad/{TeamId}/{season}")
     fun players(
         @Path("TeamId") TeamId: Int,
-        @Path("season") season: Int,
+        @Path("season") season: String,
         @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
         @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
     ): Call<PlayersDTO>
@@ -319,7 +319,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
         })
     }
 
-    fun players(id: String, season: Int, callback: (players: Array<Player>?) -> Unit){
+    fun players(id: String, season: String, callback: (players: Array<Player>?) -> Unit){
 
         servicePlayers.players(id.toInt(), season).enqueue(object: Callback<PlayersDTO>{
             override fun onFailure(call: Call<PlayersDTO>, t: Throwable) {

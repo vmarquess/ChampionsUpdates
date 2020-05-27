@@ -32,12 +32,12 @@ class PlayersActivity : AppCompatActivity() {
 
     fun showPlayers(id: String, nome: String){
         pBar.visibility = VISIBLE
-        viewModel.showPlayers(id, 2020){ players ->
+        viewModel.showPlayers(id, "2019-2020"){ players ->
+            players
             if (players != null) {
                 var str = ""
-                players?.forEach { p ->
-                    str = str.plus(" ${p.name} ${p.position} ${p.number} ${p.age} ${p.nationality}" )
-
+                players.forEach { p ->
+                    str = str.plus(" ${p.name} ${p.position} ${p.age} ${p.nationality}" )
                 }
                 pBar.visibility = GONE
                 header.text = nome
