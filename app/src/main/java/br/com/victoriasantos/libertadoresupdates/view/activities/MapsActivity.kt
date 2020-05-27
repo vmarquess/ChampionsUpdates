@@ -66,13 +66,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+        btn_center.setOnClickListener {
+            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(LatLng(47.751569,1.675063), 0.0F, 0.0F, 3F)))
+        }
         getMarkers()
         val center = LatLng(53.430983, -2.960809)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 17F))
 
-        btn_center.setOnClickListener {
-            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(LatLng(47.751569,1.675063), 0.0F, 0.0F, 3F)))
-        }
 
     }
 
