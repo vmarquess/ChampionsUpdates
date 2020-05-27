@@ -1,10 +1,13 @@
 package br.com.victoriasantos.libertadoresupdates.view.activities
 
+import android.content.Context
+import android.content.DialogInterface
 import android.location.Address
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FirebaseViewModel
@@ -15,13 +18,14 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import java.io.IOException
 
+
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
 
     private val viewModel: FirebaseViewModel by lazy {
         ViewModelProvider(this).get(FirebaseViewModel::class.java)
     }
-
+    private var showManual: String = "ShowManual"
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +34,45 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        manual()
 
     }
+
+        private fun manual(){
+            val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+
+            if(sharedPref.getBoolean(showManual,true )){
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Mapa ChampionsUpdates")
+                builder.setMessage("Você está vendo o estádio do atual campeão. Navege pelo mapa para descobrir onde estão localizados os estádios de todos os times que participaram/participam do torneio dessa temporada!")
+                builder.apply {
+                    setPositiveButton("OK, ENTENDI", object : DialogInterface.OnClickListener {
+                        override fun onClick(dialog: DialogInterface, which: Int) {
+                        }
+                    })
+                    setNegativeButton("NÃO MOSTRAR NOVAMENTE", object : DialogInterface.OnClickListener {
+                        override fun onClick(dialog: DialogInterface, which: Int) {
+                            sharedPref.edit().putBoolean(showManual, false).apply()
+
+                        }
+                    })
+                    builder.show()
+                }
+            }
+        }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         getMarkers()
-        val center = LatLng(47.751569,1.675063)
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(center))
+        mMap.setOnMarkerClickListener(this)
+        val center = LatLng(53.430983, -2.960809)
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 17F))
+        mMap.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
+            override fun onMapClick(latLng: LatLng) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15F))
+            }
+        })
 
     }
 
@@ -64,7 +98,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         try {
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
         } catch (e: IOException) {
-            Log.e("MapsActivity", e.localizedMessage)
+            Log.e("MapsActivity", e.localizedMessage!!)
         }
         if (addresses != null) {
             address1 = addresses[0].getAddressLine(0)
@@ -73,8 +107,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         return address1
     }
 
-    override fun onMarkerClick(p0: Marker): Boolean {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p0.position, 15F))
-        return true
+
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
 }
