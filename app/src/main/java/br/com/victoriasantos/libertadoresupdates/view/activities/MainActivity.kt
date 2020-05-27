@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mapbtn.setOnClickListener {
+        mapa.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java))
         }
 
-        botbtn.setOnClickListener {
+        chatbot.setOnClickListener {
             startActivity(Intent(this, ChatBotActivity::class.java))
         }
 

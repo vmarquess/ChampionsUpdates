@@ -83,7 +83,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                 markerOptions.title(getAddress(LatLng(m.latitude!!, m.longitude!!)).toString())
                 markerOptions.snippet("Time: ${m.nome}\n")
-                //TODO: INFOWINDOW
+
                 mMap.addMarker(markerOptions)
 
             }

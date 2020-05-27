@@ -47,9 +47,9 @@
     <string name="derrotas">Derrotas: </string>
     <string name="pontos">Pontos : </string>
     <string name="saldo_gols">Saldo de gols: </string>
-    <string name="posicao">Posição: "</string>
+    <string name="posicao">Posição: </string>
     <string name="indefinido">Indefinido</string>
-    <string name="data">Data: </string>
+    <string name="data">Data: /</string>
     <string name="rodada">Rodada: </string>
     <string name="status_partida">Status da partida: </string>
     <string name="arbitro">Árbitro: </string>
@@ -60,4 +60,10 @@
     <string name="numero">Número: </string>
     <string name="idade">Idade: </string>
     <string name="nacionalidade">Nacionalidade: </string>
+    <string name="teams">TIMES</string>
+    <string name="groups">GRUPOS</string>
+    <string name="matches">JOGOS</string>
+    <string name="profile">PERFIL</string>
+    <string name="map">MAPA</string>
+    <string name="chatbot">CHATBOT</string>
 </resources>

@@ -26,7 +26,7 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 }
 
                 val newTime = Team(
-                    name = app.applicationContext.getString(R.string.nome) + team.name,
+                    name = app.applicationContext.getString(R.string.nome) + " ${team.name}",
                     logo = team.logo,
                     country = app.applicationContext.getString(R.string.pais) + team.country,
                     estadio = app.applicationContext.getString(R.string.estadio) + estadio,
@@ -247,10 +247,10 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
             players?.forEach { p->
                 val player = Player(
-                    name = app.applicationContext.getString(R.string.nome) + p.name + "\n",
-                    age = app.applicationContext.getString(R.string.idade) + p.age + "\n",
-                    nationality = app.applicationContext.getString(R.string.nacionalidade) + p.nationality + "\n\n",
-                    position = app.applicationContext.getString(R.string.posicao)+ p.position + "\n"
+                    name = app.applicationContext.getString(R.string.nome) + " ${p.name}"+ "\n",
+                    age = app.applicationContext.getString(R.string.idade) + " ${p.age}" + "\n",
+                    nationality = app.applicationContext.getString(R.string.nacionalidade) + " ${p.nationality}" + "\n\n",
+                    position = app.applicationContext.getString(R.string.posicao)+ " ${p.position}" + "\n"
                 )
                 aux.add(player)
             }

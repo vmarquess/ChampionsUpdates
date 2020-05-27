@@ -321,7 +321,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
     fun players(id: String, season: String, callback: (players: Array<Player>?) -> Unit){
 
-        servicePlayers.players(id.toInt(), season).enqueue(object: Callback<PlayersDTO>{
+        servicePlayers.players(id.toInt(), season.toString()).enqueue(object: Callback<PlayersDTO>{
             override fun onFailure(call: Call<PlayersDTO>, t: Throwable) {
                 callback(null)
         }
