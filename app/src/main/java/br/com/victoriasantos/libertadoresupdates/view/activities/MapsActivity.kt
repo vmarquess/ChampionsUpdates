@@ -85,6 +85,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 markerOptions.snippet("Time: ${m.nome}\n Estádio: ${m.estadio}")
                 mMap.addMarker(markerOptions)
 
+
             }
         }
     }

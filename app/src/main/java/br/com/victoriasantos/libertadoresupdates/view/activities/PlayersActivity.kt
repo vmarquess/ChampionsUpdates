@@ -24,7 +24,7 @@ class PlayersActivity : AppCompatActivity() {
         setContentView(R.layout.activity_players)
         pBar.visibility = GONE
 
-        val id = intent.getStringExtra("id")
+        val id = intent.getStringExtra("team_id")
         val nome = intent.getStringExtra("nome")
 
         showPlayers(id, nome)

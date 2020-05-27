@@ -14,8 +14,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         interactor.teams(LeagueId){ t ->
             val times = mutableListOf<Team>()
 
-            var fundacao: String = "Desconhecido"
-            var estadio = "Desconhecido"
+            var fundacao: String = app.applicationContext.getString(R.string.desconhecido)
+            var estadio = app.applicationContext.getString(R.string.desconhecido)
 
             t.forEach { team ->
                 if(!team.fundacao.isNullOrBlank()){
@@ -26,11 +26,12 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 }
 
                 val newTime = Team(
-                    name = "Nome: ${team.name}",
+                    name = app.applicationContext.getString(R.string.nome) + team.name,
                     logo = team.logo,
-                    country = "País: ${team.country}",
-                    estadio = "Estádio: ${estadio}",
-                    fundacao = "Fundação: ${fundacao}"
+                    country = app.applicationContext.getString(R.string.pais) + team.country,
+                    estadio = app.applicationContext.getString(R.string.estadio) + estadio,
+                    fundacao = app.applicationContext.getString(R.string.fundacao) + fundacao,
+                    id = team.id
                 )
                 times.add(newTime)
             }
@@ -45,15 +46,15 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
             t.forEach { team ->
                 val newRakedTeam = TeamRanked(
-                    rank = "Posição: ${team.rank}º",
-                    nome = "Nome: ${team.nome}",
-                    partidas = "Jogos: ${team.partidas}",
-                    vitorias = "Vitórias: ${team.vitorias}",
-                    empates = "Empates: ${team.empates}",
-                    derrotas = "Derrotas: ${team.derrotas}",
-                    pontos = "Pontos : ${team.pontos}",
-                    grupo = "${team.grupo}",
-                    saldo = "Saldo de gols: ${team.saldo}",
+                    rank = app.applicationContext.getString(R.string.posicao) + team.rank + "º",
+                    nome = app.applicationContext.getString(R.string.nome) + team.nome,
+                    partidas = app.applicationContext.getString(R.string.jogos) + team.partidas,
+                    vitorias = app.applicationContext.getString(R.string.vitorias) + team.vitorias,
+                    empates = app.applicationContext.getString(R.string.empates) + team.empates,
+                    derrotas = app.applicationContext.getString(R.string.derrotas) + team.derrotas,
+                    pontos = app.applicationContext.getString(R.string.pontos) + team.pontos,
+                    grupo = team.grupo,
+                    saldo = app.applicationContext.getString(R.string.saldo_gols) + team.saldo,
                     escudo = team.escudo
 
                 )
@@ -66,8 +67,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
     fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
         interactor.matches(LeagueId){ m ->
 
-            var arbitro = "Indefinido"
-            var estadio = "Indefinido"
+            var arbitro = app.applicationContext.getString(R.string.indefinido)
+            var estadio = app.applicationContext.getString(R.string.indefinido)
 
             val matches = mutableListOf<Match>()
 
@@ -81,17 +82,17 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 }
 
                 val newMatch = Match(
-                    data = "Data: ${match.data}",
-                    rodada = "Rodada: ${match.rodada}",
-                    status = "Status da partida: ${match.status}",
+                    data = app.applicationContext.getString(R.string.data) + match.data,
+                    rodada = app.applicationContext.getString(R.string.rodada) + match.rodada,
+                    status = app.applicationContext.getString(R.string.status_partida) + match.status,
                     nome_time_casa = match.nome_time_casa,
                     logo_time_casa = match.logo_time_casa,
                     nome_time_fora = match.nome_time_fora,
                     logo_time_fora = match.logo_time_fora,
-                    tempo = "${match.tempo}'",
+                    tempo = match.tempo,
                     placar = match.placar,
-                    arbitro = "Árbitro: ${arbitro}",
-                    estadio = "Estádio: ${estadio}",
+                    arbitro = app.applicationContext.getString(R.string.arbitro) + arbitro,
+                    estadio = app.applicationContext.getString(R.string.estadio) + estadio,
                     eventos = null
                 )
                 matches.add(newMatch)
@@ -104,8 +105,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         interactor.currentMatches(LeagueId){ j, flag ->
             if (flag){
 
-                var arbitro = "Indefinido"
-                var estadio = "Indefinido"
+                var arbitro = app.applicationContext.getString(R.string.indefinido)
+                var estadio = app.applicationContext.getString(R.string.indefinido)
 
                 val matches = mutableListOf<Match>()
                 val evento = mutableListOf<Evento>()
@@ -133,20 +134,20 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     }
 
                     val domain = Match(
-                        data = "Data: ${m.data}",
-                        rodada = "Rodada: ${m.rodada}",
-                        status = "Status da partida: ${m.status}",
+                        data = app.applicationContext.getString(R.string.data)+ m.data,
+                        rodada = app.applicationContext.getString(R.string.rodada) + m.rodada,
+                        status = app.applicationContext.getString(R.string.status_partida) + m.status,
                         nome_time_casa = m.nome_time_casa,
                         logo_time_casa = m.logo_time_casa,
                         nome_time_fora = m.nome_time_fora,
                         logo_time_fora = m.logo_time_fora,
                         placar = m.placar,
-                        placar_intervalo = "Placar intervalo ${m.placar_intervalo}",
-                        placar_prorrogacao = "Placar prorrogação ${m.placar_prorrogacao}",
-                        placar_penaltis = "Placar penaltis ${m.placar_penaltis}",
+                        placar_intervalo = app.applicationContext.getString(R.string.placar_intervalo) + m.placar_intervalo,
+                        placar_prorrogacao = app.applicationContext.getString(R.string.placar_prorrogacao) + m.placar_prorrogacao,
+                        placar_penaltis = app.applicationContext.getString(R.string.placar_penaltis) + m.placar_penaltis,
                         tempo = "${m.tempo}'",
-                        arbitro = "Árbitro: ${arbitro} ",
-                        estadio ="Estádio: ${estadio}" ,
+                        arbitro = app.applicationContext.getString(R.string.arbitro) + arbitro + " ",
+                        estadio = app.applicationContext.getString(R.string.estadio) + estadio,
                         eventos = evento.toTypedArray()
                     )
                     matches.add(domain)
@@ -167,8 +168,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 callback(m,app.applicationContext.getString(R.string.empty_jogos_futuros))
             }
             else{
-                var arbitro = "Indefinido"
-                var estadio = "Indefinido"
+                var arbitro = app.applicationContext.getString(R.string.indefinido)
+                var estadio = app.applicationContext.getString(R.string.indefinido)
 
                 val matches = mutableListOf<Match>()
 
@@ -182,14 +183,14 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                     }
 
                     val newMatch = Match(
-                        data = "Data: ${match.data}",
-                        rodada = "Rodada: ${match.rodada}",
+                        data = app.applicationContext.getString(R.string.data) + match.data,
+                        rodada = app.applicationContext.getString(R.string.rodada) + match.rodada,
                         nome_time_casa = match.nome_time_casa,
                         logo_time_casa = match.logo_time_casa,
                         nome_time_fora = match.nome_time_fora,
                         logo_time_fora = match.logo_time_fora,
-                        arbitro = "Árbitro: ${arbitro}",
-                        estadio = "Estádio: ${estadio}",
+                        arbitro = app.applicationContext.getString(R.string.arbitro) + arbitro,
+                        estadio = app.applicationContext.getString(R.string.estadio) + estadio,
                         eventos = null
                     )
                     matches.add(newMatch)
@@ -202,9 +203,9 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
     fun lastMatches(LeagueId: Int, number: Int, callback: (jogos: Array<Match>) -> Unit){
         interactor.lastMatches(LeagueId, number){ m ->
 
-            var tempo = "Cancelado"
-            var arbitro = "Indefinido"
-            var estadio = "Indefinido"
+            var tempo = app.applicationContext.getString(R.string.cancelado)
+            var arbitro = app.applicationContext.getString(R.string.indefinido)
+            var estadio = app.applicationContext.getString(R.string.indefinido)
 
             val matches = mutableListOf<Match>()
 
@@ -221,17 +222,17 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 }
 
                 val newMatch = Match(
-                    data = "Data: ${match.data}",
-                    rodada = "Rodada: ${match.rodada}",
-                    status = "Status da partida: ${match.status}",
+                    data = app.applicationContext.getString(R.string.data) + match.data,
+                    rodada = app.applicationContext.getString(R.string.rodada) + match.rodada,
+                    status = app.applicationContext.getString(R.string.status_partida) + match.status,
                     nome_time_casa = match.nome_time_casa,
                     logo_time_casa = match.logo_time_casa,
                     nome_time_fora = match.nome_time_fora,
                     logo_time_fora = match.logo_time_fora,
                     tempo = "${tempo}'",
                     placar = match.placar,
-                    arbitro = "Árbitro: ${arbitro}",
-                    estadio = "Estádio: ${estadio}",
+                    arbitro = app.applicationContext.getString(R.string.arbitro) + arbitro,
+                    estadio = app.applicationContext.getString(R.string.estadio) + estadio,
                     eventos = null
                 )
                 matches.add(newMatch)
@@ -246,11 +247,11 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
 
             players?.forEach { p->
                 val player = Player(
-                    name = "Nome: ${p.name}\n",
-                    number = "Número: ${p.number}\n",
-                    age = "Idade: ${p.age}\n",
-                    nationality = "Nacionalidade: ${p.nationality}\n\n",
-                    position = "Posição: ${p.position}\n"
+                    name = app.applicationContext.getString(R.string.nome) + p.name + "\n",
+                    number = app.applicationContext.getString(R.string.numero) + p.number + "\n",
+                    age = app.applicationContext.getString(R.string.idade) + p.age + "\n",
+                    nationality = app.applicationContext.getString(R.string.nacionalidade) + p.nationality + "\n\n",
+                    position = app.applicationContext.getString(R.string.posicao)+ p.position + "\n"
                 )
                 aux.add(player)
             }

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.time_item.view.*
 
 
 class TeamAdapter(private val activity: TeamsActivity, private val dataSet: Array<Team>) :
-    RecyclerView.Adapter<TeamAdapter.TimeViewHolder>(){
+    RecyclerView.Adapter<TeamAdapter.TimeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.time_item, parent, false)
@@ -28,7 +28,7 @@ class TeamAdapter(private val activity: TeamsActivity, private val dataSet: Arra
 
     override fun onBindViewHolder(holder: TimeViewHolder, position: Int) {
         val time = dataSet[position]
-        Picasso.get().load(time.logo).into(holder.escudo);
+        Picasso.get().load(time.logo).into(holder.escudo)
         holder.escudo.setOnClickListener {
             activity.players(time.id!!, time.name!!)
         }
