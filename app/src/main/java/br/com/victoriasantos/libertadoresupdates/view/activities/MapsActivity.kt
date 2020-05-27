@@ -16,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.activity_maps.*
 import java.io.IOException
 
 
@@ -36,6 +37,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         mapFragment.getMapAsync(this)
         manual()
 
+
     }
 
         private fun manual(){
@@ -44,7 +46,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             if(sharedPref.getBoolean(showManual,true )){
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Mapa ChampionsUpdates")
-                builder.setMessage("Você está vendo o estádio do atual campeão. Navege pelo mapa para descobrir onde estão localizados os estádios de todos os times que participaram/participam do torneio dessa temporada!")
+                builder.setMessage("Você está vendo o estádio do atual campeão! Navege pelo mapa para descobrir onde estão localizados os estádios de todos os times que participaram/participam do torneio dessa temporada! Clique no botão de centralizar mapa para ver os outros marcadores, eles indicam os estadios!")
                 builder.apply {
                     setPositiveButton("OK, ENTENDI", object : DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, which: Int) {
@@ -63,16 +65,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
         getMarkers()
-        mMap.setOnMarkerClickListener(this)
         val center = LatLng(53.430983, -2.960809)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 17F))
-        mMap.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
-            override fun onMapClick(latLng: LatLng) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15F))
-            }
-        })
+
+        btn_center.setOnClickListener {
+            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition(LatLng(47.751569,1.675063), 0.0F, 0.0F, 3F)))
+        }
 
     }
 
@@ -82,9 +82,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 val markerOptions = MarkerOptions().position(LatLng(m.latitude!!, m.longitude!!))
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                 markerOptions.title(getAddress(LatLng(m.latitude!!, m.longitude!!)).toString())
-                markerOptions.snippet("Time: ${m.nome}\n Estádio: ${m.estadio}")
+                markerOptions.snippet("Time: ${m.nome}\n")
+                //TODO: INFOWINDOW
                 mMap.addMarker(markerOptions)
-
 
             }
         }
@@ -110,7 +110,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
 
     override fun onMarkerClick(p0: Marker?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return true
     }
 
 }

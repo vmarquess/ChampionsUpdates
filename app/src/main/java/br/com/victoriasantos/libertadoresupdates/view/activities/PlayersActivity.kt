@@ -36,13 +36,13 @@ class PlayersActivity : AppCompatActivity() {
             if (players != null) {
                 var str = ""
                 players?.forEach { p ->
-                    str = str.plus("${p.name} ${p.position} ${p.number} ${p.age} ${p.nationality}" )
+                    str = str.plus(" ${p.name} ${p.position} ${p.number} ${p.age} ${p.nationality}" )
 
                 }
                 pBar.visibility = GONE
                 header.text = nome
                 playersTextView.text = str
-          
+
             }
             else{
                 pBar.visibility = GONE
