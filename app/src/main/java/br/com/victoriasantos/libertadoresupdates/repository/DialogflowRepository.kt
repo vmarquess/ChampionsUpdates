@@ -2,7 +2,7 @@ package br.com.victoriasantos.libertadoresupdates.repository
 
 import android.content.Context
 import br.com.victoriasantos.libertadoresupdates.domain.DialogFlowRequest
-import br.com.victoriasantos.libertadoresupdates.repository.dto.DialogFlowResult
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.DialogFlowResult
 import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback

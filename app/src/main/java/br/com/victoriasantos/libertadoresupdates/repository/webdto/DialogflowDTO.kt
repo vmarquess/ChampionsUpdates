@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.repository.dto
+package br.com.victoriasantos.libertadoresupdates.repository.webdto
 
 
 data class DialogFlowResult(

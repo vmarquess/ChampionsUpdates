@@ -1,4 +1,4 @@
-package br.com.victoriasantos.libertadoresupdates.repository.dto
+package br.com.victoriasantos.libertadoresupdates.repository.webdto
 
 import com.google.gson.annotations.SerializedName
 

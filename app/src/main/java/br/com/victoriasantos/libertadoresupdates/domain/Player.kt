@@ -1,6 +1,5 @@
 package br.com.victoriasantos.libertadoresupdates.domain
 
-import com.google.gson.annotations.SerializedName
 
 data class Player(
     val name: String? = null,

@@ -3,10 +3,10 @@ package br.com.victoriasantos.libertadoresupdates.repository
 import android.content.Context
 import br.com.victoriasantos.libertadoresupdates.domain.*
 import retrofit2.Call
-import br.com.victoriasantos.libertadoresupdates.repository.dto.MatchesAPIDTO
-import br.com.victoriasantos.libertadoresupdates.repository.dto.PlayersDTO
-import br.com.victoriasantos.libertadoresupdates.repository.dto.TableAPIDTO
-import br.com.victoriasantos.libertadoresupdates.repository.dto.TimeAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.MatchesAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.PlayersDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.TableAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.TimeAPIDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -209,11 +209,11 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures
                 val result = mutableListOf<Match>()
-                val evento = mutableListOf<Evento>()
+                val evento = mutableListOf<Event>()
 
                 matches?.forEach { m ->
                     m.events?.forEach { e ->
-                        val newEvent = Evento(
+                        val newEvent = Event(
                             evento_acrescimo = e.acrescimo.toString(),
                             evento_tempo = e.tempo.toString(),
                             evento_type = e.type,
