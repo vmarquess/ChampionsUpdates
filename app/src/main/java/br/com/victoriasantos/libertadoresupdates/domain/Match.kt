@@ -1,5 +1,6 @@
 package br.com.victoriasantos.libertadoresupdates.domain
 
+
 data class Match(
     val data: String? = null,
     val id: String? = null,
