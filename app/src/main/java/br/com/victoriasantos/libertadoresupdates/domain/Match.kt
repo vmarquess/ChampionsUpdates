@@ -2,7 +2,6 @@ package br.com.victoriasantos.libertadoresupdates.domain
 
 data class Match(
     val data: String? = null,
-    val id: String? = null,
     val rodada: String? = null,
     val status: String? = null,
     val nome_time_casa: String? = null,

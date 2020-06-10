@@ -35,7 +35,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 )
                 times.add(newTime)
             }
-            callback(times.toTypedArray())
+            val sortedList = times.sortedWith(compareBy({ it.name }))
+            callback(sortedList.toTypedArray())
         }
     }
 
@@ -60,7 +61,9 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 )
                 tabela.add(newRakedTeam)
             }
-            callback(tabela.toTypedArray())
+
+            val sortedList = tabela.sortedWith(compareBy({ it.grupo }, { it.rank }))
+            callback(sortedList.toTypedArray())
         }
     }
 
@@ -109,11 +112,11 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 var estadio = app.applicationContext.getString(R.string.indefinido)
 
                 val matches = mutableListOf<Match>()
-                val evento = mutableListOf<Evento>()
+                val evento = mutableListOf<Event>()
 
-                j?.forEach { m ->
+                j.forEach { m ->
                     m.eventos?.forEach { e ->
-                        val newEvent = Evento(
+                        val newEvent = Event(
                             evento_acrescimo = "+${e.evento_acrescimo}'",
                             evento_tempo = "${e.evento_tempo}'",
                             evento_type = e.evento_type,

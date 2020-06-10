@@ -115,7 +115,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         country = t.country,
                         estadio = t.estadio,
                         fundacao = t.fundacao,
-                        id = t.team_id.toString()
+                        id = t.team_id!!
                     )
                     result.add(domain)
                 }
@@ -321,7 +321,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
     fun players(id: String, season: String, callback: (players: Array<Player>?) -> Unit){
 
-        servicePlayers.players(id.toInt(), season.toString()).enqueue(object: Callback<PlayersDTO>{
+        servicePlayers.players(id.toInt(), season).enqueue(object: Callback<PlayersDTO>{
             override fun onFailure(call: Call<PlayersDTO>, t: Throwable) {
                 callback(null)
         }
@@ -344,7 +344,6 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                 callback(players.toTypedArray())
             }
         })
-
     }
 
 }

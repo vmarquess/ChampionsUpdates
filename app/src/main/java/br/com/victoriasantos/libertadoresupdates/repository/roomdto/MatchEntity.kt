@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "match")
 data class MatchEntity(
     val data: String? = null,
-    @PrimaryKey val id: Int? = 0,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "rodada") val rodada: String? = null,
     @ColumnInfo(name = "status") val status: String? = null,
     @ColumnInfo(name = "time_casa") val nome_time_casa: String? = null,
@@ -21,5 +21,6 @@ data class MatchEntity(
     @ColumnInfo(name = "tempo") val tempo: String? = null,
     @ColumnInfo(name = "estadio") val estadio : String? = null,
     @ColumnInfo(name = "arbitro") val arbitro : String? = null,
-    @ColumnInfo(name = "eventos") val eventos: Array<EventEntity>?
+    @ColumnInfo(name = "data_recup") val data_recup : String? = null
+
 )

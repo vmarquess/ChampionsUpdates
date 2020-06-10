@@ -30,7 +30,7 @@ class TeamAdapter(private val activity: TeamsActivity, private val dataSet: Arra
         val time = dataSet[position]
         Picasso.get().load(time.logo).into(holder.escudo)
         holder.escudo.setOnClickListener {
-            activity.players(time.id!!, time.name!!)
+            activity.players(time.id!!.toString(), time.name!!)
         }
         holder.nome.text = time.name
         holder.pais.text = time.country

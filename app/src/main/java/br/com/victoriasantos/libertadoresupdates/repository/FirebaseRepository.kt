@@ -84,7 +84,7 @@ class FirebaseRepository(context: Context){
         }
     }
 
-    fun saveData(email: String, nome: String, telefone: String, time: String, callback: (result: String) -> Unit){
+    fun saveData(email: String, nome: String, telefone: String, time: String, callback: (result: String, profile : Profile?) -> Unit){
         profile = Profile(
             email = email,
             nome = nome,
@@ -98,12 +98,11 @@ class FirebaseRepository(context: Context){
             // Variável que define qual nó será atualizado, nesse caso será o nó "Usuários"
             val userprofile = database.getReference("Usuários/$uid") // $uid é o onde será substituido pelo id do usuário logado
             userprofile.setValue(profile) //Atualiza/cria os dados
-            callback("SUCCESS")
+            callback("SUCCESS", profile)
 
         }
-        else
-        {
-            callback("UID RECOVER FAIL")
+        else {
+            callback("UID RECOVER FAIL",null)
         }
 
     }

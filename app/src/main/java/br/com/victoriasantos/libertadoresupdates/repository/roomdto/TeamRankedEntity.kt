@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey
 
 @Entity (tableName = "teamRanked")
 data class TeamRankedEntity (
-    @ColumnInfo (name = "rank") val rank: String? = null,
+    @ColumnInfo (name = "rank") val rank: Int? = 0,
     @ColumnInfo (name = "nome") val nome: String? = null,
-    @PrimaryKey val id: String? = null,
+    @PrimaryKey val id: Int? = 0,
     @ColumnInfo (name = "escudo") val escudo: String? = null,
     @ColumnInfo (name = "partidas") val partidas: String? = null,
     @ColumnInfo (name = "vitorias") val vitorias: String? = null,
