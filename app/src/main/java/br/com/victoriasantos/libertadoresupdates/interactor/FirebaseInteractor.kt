@@ -44,6 +44,21 @@ class FirebaseInteractor(private val context: Context) {
         }
     }
 
+    fun logout(callback: (result: String) -> Unit){
+        repositoryWeb.logout(callback)
+    }
+
+    fun verifyLogin(callback: (result: String?) -> Unit){
+        repositoryWeb.verifyLogin{result ->
+            if(result == null){
+                callback(null)
+            }
+            else{
+                callback("SUCCESS")
+            }
+        }
+    }
+
     fun changePassword(email: String, callback: (result: String) -> Unit) {
         if (!this.campoVazio(email)) {
             repositoryWeb.changePassword(email)

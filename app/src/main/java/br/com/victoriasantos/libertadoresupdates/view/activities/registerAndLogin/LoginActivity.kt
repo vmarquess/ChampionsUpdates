@@ -23,10 +23,20 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         pBar.visibility = GONE
+        verifyLogin()
 
         bt_cadastro.setOnClickListener { cadastrar() }
         esqueci_senha.setOnClickListener { esqueciSenha() }
         bt_login.setOnClickListener { login() }
+    }
+
+    fun verifyLogin() {
+        viewModel.verifyLogin {result ->
+            if(result != null) {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            }
+        }
     }
 
 

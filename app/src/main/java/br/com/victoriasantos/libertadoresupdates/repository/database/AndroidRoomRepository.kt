@@ -108,26 +108,32 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
     fun teamRanked(tipoAcao: Int, timesRank: Array<TeamRanked>) {
         // tipo 1 - inserir
         // tipo 2 - deletar
-        timesRank.forEach { team ->
-            val domain = TeamRankedEntity(
-                derrotas = team.derrotas,
-                escudo = team.escudo,
-                empates = team.empates,
-                grupo = team.grupo,
-                id = team.id!!.toInt(),
-                nome = team.nome,
-                rank = team.rank!!.toInt(),
-                partidas = team.partidas,
-                vitorias = team.vitorias,
-                pontos = team.pontos,
-                saldo = team.saldo,
-                data_recup = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time)
-            )
-            launch {
-                if (tipoAcao == 1) {
-                    database.insertTeamRanked(domain)
-                } else if (tipoAcao == 2) {
-                    database.deleteTeamRanked(domain)
+        // tipo 3 - update
+        launch {
+            if (!timesRank.isNullOrEmpty()) {
+                timesRank.forEach { team ->
+                    val domain = TeamRankedEntity(
+                        derrotas = team.derrotas,
+                        escudo = team.escudo,
+                        empates = team.empates,
+                        grupo = team.grupo,
+                        id = team.id!!.toInt(),
+                        nome = team.nome,
+                        rank = team.rank!!.toInt(),
+                        partidas = team.partidas,
+                        vitorias = team.vitorias,
+                        pontos = team.pontos,
+                        saldo = team.saldo,
+                        data_recup = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time)
+                    )
+
+                    if (tipoAcao == 1) {
+                        database.insertTeamRanked(domain)
+                    } else if (tipoAcao == 2) {
+                        database.deleteTeamRanked(domain)
+                    } else if(tipoAcao == 3){
+                        database.updateTeamRanked(domain)
+                    }
                 }
             }
         }
@@ -224,7 +230,8 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
     fun matches(tipoAcao: Int, match: Array<Match>?) {
         // tipo 1 - inserir
         // tipo 2 - deletar
-        // tipo 3 - update
+        // tipo 3 - delete all table
+        // tipo 4 - update
         launch {
             if (tipoAcao == 3) {
                 database.deleteAllMatchTable()

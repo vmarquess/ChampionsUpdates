@@ -38,4 +38,7 @@ class DatabaseHelperImpl(val appDatabase: AndroidRoomDatabase) : DatabaseHelper 
     override suspend fun deleteAllMatchTable() = appDatabase.MatchDAO().deleteAlltable()
 
     override suspend fun updateMatch(match: MatchEntity) = appDatabase.MatchDAO().updateMatch(match)
+
+    override suspend fun updateTeamRanked(teamRank : TeamRankedEntity) = appDatabase.TeamRankedDao().updateTeamRanked(teamRank)
+
 }

@@ -13,4 +13,7 @@ interface TeamRankedDAO{
 
     @Delete
     suspend fun deleteTeamRanked(teamRank : TeamRankedEntity)
+
+    @Update
+    suspend fun updateTeamRanked(teamRank : TeamRankedEntity)
 }

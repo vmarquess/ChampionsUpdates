@@ -45,9 +45,8 @@ class FootballAPIInteractor(private val context: Context) {
             }
         } else {
             repositoryWeb.table(LeagueId) { resultWeb ->
-                repositoryLocal.teamRanked(1, resultWeb)
+                repositoryLocal.teamRanked(3, resultWeb)
                 callback(resultWeb, SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time))
-
             }
         }
     }
@@ -66,6 +65,7 @@ class FootballAPIInteractor(private val context: Context) {
                 }
             } else {
                 repositoryWeb.matches(LeagueId) { resultWeb ->
+                    repositoryLocal.matches(3, null)
                     repositoryLocal.matches(1, resultWeb)
                     callback(resultWeb, SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time))
                 }
@@ -103,20 +103,15 @@ class FootballAPIInteractor(private val context: Context) {
                     if (m.isNullOrEmpty()) {
                         callback(m, 0, SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time))
                     } else {
+                        repositoryLocal.matches(3, null)
                         repositoryLocal.matches(1, m)
                         callback(m, 1, SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time))
                     }
                 }
             }
-
         }
 
-        fun lastMatches(
-            LeagueId: Int,
-            update: Int,
-            number: Int,
-            callback: (jogos: Array<Match>, date: String?) -> Unit
-        ) {
+        fun lastMatches(LeagueId: Int, update: Int, number: Int, callback: (jogos: Array<Match>, date: String?) -> Unit) {
             if (update == 0) {
                 repositoryLocal.showMatch("Match Finished") { result, date ->
                     if (result.isNullOrEmpty()) {
@@ -130,6 +125,7 @@ class FootballAPIInteractor(private val context: Context) {
                 }
             } else {
                 repositoryWeb.lastMatches(LeagueId, number) { resultWeb ->
+                    repositoryLocal.matches(3, null)
                     repositoryLocal.matches(1, resultWeb)
                     callback(resultWeb, SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time))
                 }

@@ -35,8 +35,7 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
                 )
                 times.add(newTime)
             }
-            val sortedList = times.sortedWith(compareBy({ it.name }))
-            callback(sortedList.toTypedArray())
+            callback(times.toTypedArray())
         }
     }
 

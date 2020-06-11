@@ -22,4 +22,6 @@ interface DatabaseHelper {
     suspend fun deleteMatch(match : MatchEntity)
     suspend fun deleteAllMatchTable()
     suspend fun updateMatch(match : MatchEntity)
+    suspend fun updateTeamRanked(teamRank : TeamRankedEntity)
+
 }

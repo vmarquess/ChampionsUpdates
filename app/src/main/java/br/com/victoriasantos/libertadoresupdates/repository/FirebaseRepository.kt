@@ -3,6 +3,7 @@ package br.com.victoriasantos.libertadoresupdates.repository
 import android.content.Context
 import br.com.victoriasantos.libertadoresupdates.domain.Profile
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -43,6 +44,18 @@ class FirebaseRepository(context: Context){
             }
         }
     }
+
+    fun logout(callback: (result: String) -> Unit){
+        mAuth.signOut()
+        callback("S")
+    }
+
+    fun verifyLogin(callback: (result: FirebaseUser?) -> Unit){
+        mAuth.addAuthStateListener { user ->
+            callback(user.currentUser)
+        }
+    }
+
 
     fun changePassword(email: String){
         mAuth.sendPasswordResetEmail(email)
