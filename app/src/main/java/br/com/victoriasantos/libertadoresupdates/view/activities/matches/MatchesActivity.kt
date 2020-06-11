@@ -24,7 +24,7 @@ class MatchesActivity : AppCompatActivity() {
         configureRecyclerView()
         showMatches(0)
 
-        atualizar.setOnClickListener {
+        atualizarbtn.setOnClickListener {
             showMatches(1)
         }
         jogosProx.setOnClickListener{
@@ -50,7 +50,8 @@ class MatchesActivity : AppCompatActivity() {
             JogosRecyclerView.adapter = null
         }
         pBar.visibility = VISIBLE
-        viewModel.matches(530, update){ matches ->
+        viewModel.matches(530, update){ matches, date ->
+            data.text = date
             val adapter = MatchesAdapter(matches)
             JogosRecyclerView.adapter = adapter
             pBar.visibility = GONE

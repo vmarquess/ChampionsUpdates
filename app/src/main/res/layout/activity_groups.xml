@@ -19,7 +19,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.318" />
 
+    <TextView
+        android:id="@+id/atualizarbt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="8dp"
+        android:drawableEnd="@drawable/update"
+        android:fontFamily="@font/viga"
+        android:gravity="end"
+        android:text="@string/atualizar_tabela"
+        android:textColor="@color/Branco"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/viga"
+        android:gravity="end"
+        android:textColor="@color/Branco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/TabelaRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/TabelaRecyclerView"
@@ -28,5 +55,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/atualizarbt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

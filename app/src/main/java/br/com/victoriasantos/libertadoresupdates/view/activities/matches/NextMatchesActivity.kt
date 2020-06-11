@@ -12,6 +12,7 @@ import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.view.adapter.NextMatchesAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
 import kotlinx.android.synthetic.main.activity_next_matches.*
+import kotlinx.android.synthetic.main.activity_next_matches.pBar
 
 class NextMatchesActivity : AppCompatActivity() {
 
@@ -24,6 +25,9 @@ class NextMatchesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_next_matches)
         pBar.visibility = GONE
+        atualizarb.setOnClickListener {
+            showMatches(1)
+        }
         configureRecyclerView()
         showMatches(0)
     }
@@ -34,9 +38,12 @@ class NextMatchesActivity : AppCompatActivity() {
     }
 
     fun showMatches(update : Int) {
+        if(update == 1){
+            jogosProximos_Recycleview.adapter = null
+        }
         pBar.visibility = VISIBLE
-        viewModel.nextMatches(530,20, update) { Nextmatches, mensagem ->
-
+        viewModel.nextMatches(530,20, update) { Nextmatches, mensagem, date ->
+            data.text = date
             if(mensagem.isNullOrBlank()){
                 val adapter = NextMatchesAdapter(Nextmatches)
                 jogosProximos_Recycleview.adapter = adapter

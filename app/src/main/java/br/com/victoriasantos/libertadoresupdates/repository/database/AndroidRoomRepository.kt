@@ -7,6 +7,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 
@@ -71,14 +73,16 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
         }
     }
 
-    fun showTeamRanked(callback: (times: Array<TeamRanked>?) -> Unit) {
+    fun showTeamRanked(callback: (times: Array<TeamRanked>?, date: String?) -> Unit) {
 
         launch {
             val teams = database.showAllTeamRanked()
+            var date: String? = null
             val result = mutableListOf<TeamRanked>()
 
             if (!teams.isNullOrEmpty()) {
                 teams.forEach { t ->
+                    date = t.data_recup!!
                     val domain = TeamRanked(
                         derrotas = t.derrotas,
                         escudo = t.escudo,
@@ -94,9 +98,9 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
                     )
                     result.add(domain)
                 }
-                callback(result.toTypedArray())
+                callback(result.toTypedArray(), date)
             } else {
-                callback(null)
+                callback(null, null)
             }
         }
     }
@@ -116,7 +120,8 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
                 partidas = team.partidas,
                 vitorias = team.vitorias,
                 pontos = team.pontos,
-                saldo = team.saldo
+                saldo = team.saldo,
+                data_recup = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time)
             )
             launch {
                 if (tipoAcao == 1) {
@@ -161,10 +166,12 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
                     age = p.age,
                     id_team = id_team.toInt(),
                     nationality = p.nationality
+
                 )
                 launch {
                     if (tipoAcao == 1) {
                         database.insertPlayer(domain)
+
                     } else if (tipoAcao == 2) {
                         database.deletePlayer(domain)
                     }
@@ -173,8 +180,9 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
         }
     }
 
-    fun showMatch(status: String?, callback: (match: Array<Match>?) -> Unit) {
+    fun showMatch(status: String?, callback: (match: Array<Match>?, date: String?) -> Unit) {
         var match: Array<MatchEntity>
+        var date: String? = null
         val result = mutableListOf<Match>()
         launch {
             if (status.isNullOrBlank()) {
@@ -185,6 +193,7 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
 
             if (!match.isNullOrEmpty()) {
                 match.forEach { m ->
+                    date = m.data_recup!!
                     val domain = Match(
                         data = m.data,
                         rodada = m.rodada,
@@ -201,12 +210,13 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
                         estadio = m.estadio,
                         arbitro = m.arbitro,
                         eventos = null
+
                     )
                     result.add(domain)
                 }
-                callback(result.toTypedArray())
+                callback(result.toTypedArray(), date)
             } else {
-                callback(null)
+                callback(null, null)
             }
         }
     }
@@ -234,7 +244,8 @@ class AndroidRoomRepository(context: Context) : CoroutineScope {
                         placar_prorrogacao = m.placar_prorrogacao,
                         tempo = m.tempo,
                         estadio = m.estadio,
-                        arbitro = m.arbitro
+                        arbitro = m.arbitro,
+                        data_recup = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date().time)
                     )
                     if (tipoAcao == 1) {
                         database.insertMatch(domain)

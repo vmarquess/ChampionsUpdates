@@ -21,9 +21,11 @@ class GroupsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_groups)
         pBar.visibility = GONE
-
+        atualizarbt.setOnClickListener {
+            showTable(1)
+        }
         configureRecyclerView()
-        showTable()
+        showTable(0)
     }
 
     private fun configureRecyclerView(){
@@ -31,9 +33,13 @@ class GroupsActivity : AppCompatActivity() {
 
     }
 
-    private fun showTable(){
+    private fun showTable(update: Int){
+        if(update == 1){
+            TabelaRecyclerView.adapter = null
+        }
         pBar.visibility = VISIBLE
-        viewModel.table(530){ tabela ->
+        viewModel.table(530, update){ tabela, date ->
+            data.text = date
             val adapter = TableAdapter(tabela)
             TabelaRecyclerView.adapter = adapter
             pBar.visibility = GONE

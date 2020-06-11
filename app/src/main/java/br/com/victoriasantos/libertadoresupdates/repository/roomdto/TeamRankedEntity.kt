@@ -17,5 +17,6 @@ data class TeamRankedEntity (
     @ColumnInfo (name = "derrotas") val derrotas: String? = null,
     @ColumnInfo (name = "pontos") val pontos: String? = null,
     @ColumnInfo (name = "grupo") val grupo: String? = null,
-    @ColumnInfo (name = "saldo") val saldo: String? = null
+    @ColumnInfo (name = "saldo") val saldo: String? = null,
+    @ColumnInfo (name = "data_recup") val data_recup: String? = null
 )
