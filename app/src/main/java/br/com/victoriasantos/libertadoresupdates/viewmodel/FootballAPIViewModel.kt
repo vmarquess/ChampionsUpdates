@@ -40,7 +40,7 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun table(LeagueId: Int, update: Int, callback: (tabela: Array<TeamRanked>, date: String) -> Unit){
+    fun table(LeagueId: Int, update: Int, callback: (tabela: Array<TeamRanked>, date: String?) -> Unit){
 
         interactor.table(LeagueId, update) { t, date ->
             val tabela = mutableListOf<TeamRanked>()
@@ -63,7 +63,7 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
             }
 
             val sortedList = tabela.sortedWith(compareBy({ it.grupo }, { it.rank }))
-            callback(sortedList.toTypedArray(), date!!)
+            callback(sortedList.toTypedArray(), date)
         }
     }
 

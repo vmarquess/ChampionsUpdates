@@ -51,7 +51,7 @@ class MatchesActivity : AppCompatActivity() {
         }
         pBar.visibility = VISIBLE
         viewModel.matches(530, update){ matches, date ->
-            data.text = date
+            data.text = getString(R.string.last_update) + date
             val adapter = MatchesAdapter(matches)
             JogosRecyclerView.adapter = adapter
             pBar.visibility = GONE

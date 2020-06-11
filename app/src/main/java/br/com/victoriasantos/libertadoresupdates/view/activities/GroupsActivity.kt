@@ -39,7 +39,7 @@ class GroupsActivity : AppCompatActivity() {
         }
         pBar.visibility = VISIBLE
         viewModel.table(530, update){ tabela, date ->
-            data.text = date
+            data.text = getString(R.string.last_update) + date
             val adapter = TableAdapter(tabela)
             TabelaRecyclerView.adapter = adapter
             pBar.visibility = GONE

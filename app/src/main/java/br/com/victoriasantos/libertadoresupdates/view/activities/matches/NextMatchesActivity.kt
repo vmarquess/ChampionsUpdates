@@ -43,7 +43,7 @@ class NextMatchesActivity : AppCompatActivity() {
         }
         pBar.visibility = VISIBLE
         viewModel.nextMatches(530,20, update) { Nextmatches, mensagem, date ->
-            data.text = date
+            data.text = getString(R.string.last_update) + date
             if(mensagem.isNullOrBlank()){
                 val adapter = NextMatchesAdapter(Nextmatches)
                 jogosProximos_Recycleview.adapter = adapter
