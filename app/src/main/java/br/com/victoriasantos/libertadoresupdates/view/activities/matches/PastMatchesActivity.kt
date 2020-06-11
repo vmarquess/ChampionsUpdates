@@ -23,16 +23,16 @@ class PastMatchesActivity : AppCompatActivity() {
         pBar.visibility = GONE
 
         configureRecyclerView()
-        showMatches()
+        showMatches(0)
     }
 
     fun configureRecyclerView(){
         jogosAnt_Recycleview.layoutManager = LinearLayoutManager(this)
     }
 
-    fun showMatches(){
+    fun showMatches(update : Int){
         pBar.visibility = VISIBLE
-        viewModel.lastMatches(530,20){ matches ->
+        viewModel.lastMatches(530,20, update){ matches ->
             val adapter = MatchesAdapter(matches)
             jogosAnt_Recycleview.adapter = adapter
             pBar.visibility = GONE

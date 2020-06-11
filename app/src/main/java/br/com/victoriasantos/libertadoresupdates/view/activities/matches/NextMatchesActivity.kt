@@ -25,7 +25,7 @@ class NextMatchesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_next_matches)
         pBar.visibility = GONE
         configureRecyclerView()
-        showMatches()
+        showMatches(0)
     }
 
 
@@ -33,9 +33,9 @@ class NextMatchesActivity : AppCompatActivity() {
         jogosProximos_Recycleview.layoutManager = LinearLayoutManager(this)
     }
 
-    fun showMatches() {
+    fun showMatches(update : Int) {
         pBar.visibility = VISIBLE
-        viewModel.nextMatches(530,20) { Nextmatches, mensagem ->
+        viewModel.nextMatches(530,20, update) { Nextmatches, mensagem ->
 
             if(mensagem.isNullOrBlank()){
                 val adapter = NextMatchesAdapter(Nextmatches)

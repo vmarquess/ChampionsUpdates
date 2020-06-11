@@ -41,15 +41,22 @@ class FootballAPIInteractor(private val context: Context)  {
         }
     }
 
-    fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit) {
-        repositoryLocal.showMatch(null){ result ->
-            if(result.isNullOrEmpty()){
-                repositoryWeb.matches(LeagueId){ resultWeb ->
-                    repositoryLocal.matches(1, resultWeb)
-                    callback(resultWeb)
+    fun matches(LeagueId: Int, update : Int, callback: (jogos: Array<Match>) -> Unit) {
+        if(update == 0){
+            repositoryLocal.showMatch(null){ result ->
+                if(result.isNullOrEmpty()){
+                    repositoryWeb.matches(LeagueId){ resultWeb ->
+                        repositoryLocal.matches(1, resultWeb)
+                        callback(resultWeb)
+                    }
+                } else{
+                    callback(result)
                 }
-            } else{
-                callback(result)
+            }
+        } else{
+            repositoryWeb.matches(LeagueId){ resultWeb ->
+                repositoryLocal.matches(1, resultWeb)
+                callback(resultWeb)
             }
         }
     }
@@ -65,33 +72,53 @@ class FootballAPIInteractor(private val context: Context)  {
         }
     }
 
-    fun nextMatches(LeagueId: Int, number : Int, callback: (jogos: Array<Match>, flag : Int) -> Unit){
-        repositoryLocal.showMatch("Not Started"){ result ->
-            if(result.isNullOrEmpty()){
-                repositoryWeb.nextMatches(LeagueId, number){m ->
-                    if(m.isNullOrEmpty()){
-                        callback(m,0)
+    fun nextMatches(LeagueId: Int, update : Int, number : Int, callback: (jogos: Array<Match>, flag : Int) -> Unit){
+        if(update == 0){
+            repositoryLocal.showMatch("Not Started"){ result ->
+                if(result.isNullOrEmpty()){
+                    repositoryWeb.nextMatches(LeagueId, number){m ->
+                        if(m.isNullOrEmpty()){
+                            callback(m,0)
+                        }
+                        else{
+                            repositoryLocal.matches(1, m)
+                            callback(m,1)
+                        }
                     }
-                    else{
-                        repositoryLocal.matches(1, m)
-                        callback(m,1)
-                    }
+                } else{
+                    callback(result,1)
                 }
-            } else{
-                callback(result,1)
+            }
+        } else{
+            repositoryWeb.nextMatches(LeagueId, number){m ->
+                if(m.isNullOrEmpty()){
+                    callback(m,0)
+                }
+                else{
+                    repositoryLocal.matches(1, m)
+                    callback(m,1)
+                }
             }
         }
 
     }
 
-    fun lastMatches(LeagueId: Int, number: Int,callback: (jogos: Array<Match>) -> Unit) {
-        repositoryLocal.showMatch("Match Finished"){result ->
-            if(result.isNullOrEmpty()){
-                repositoryWeb.lastMatches(LeagueId,number){ resultWeb ->
-                    repositoryLocal.matches(1, resultWeb)
+    fun lastMatches(LeagueId: Int, update : Int,number: Int,callback: (jogos: Array<Match>) -> Unit) {
+        if(update == 0){
+            repositoryLocal.showMatch("Match Finished"){result ->
+                if(result.isNullOrEmpty()){
+                    repositoryWeb.lastMatches(LeagueId,number){ resultWeb ->
+                        repositoryLocal.matches(1, resultWeb)
+                        callback(resultWeb)
+                    }
+                } else{
+                    callback(result)
                 }
-            } else{
-                callback(result)
+            }
+        } else{
+            repositoryWeb.lastMatches(LeagueId,number){ resultWeb ->
+                repositoryLocal.matches(1, resultWeb)
+                callback(resultWeb)
             }
         }
     }

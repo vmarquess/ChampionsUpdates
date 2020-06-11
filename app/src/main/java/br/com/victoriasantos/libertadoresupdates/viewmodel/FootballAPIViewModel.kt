@@ -67,8 +67,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun matches(LeagueId: Int, callback: (jogos: Array<Match>) -> Unit){
-        interactor.matches(LeagueId){ m ->
+    fun matches(LeagueId: Int, update : Int, callback: (jogos: Array<Match>) -> Unit){
+        interactor.matches(LeagueId, update){ m ->
 
             var arbitro = app.applicationContext.getString(R.string.indefinido)
             var estadio = app.applicationContext.getString(R.string.indefinido)
@@ -164,8 +164,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun nextMatches(LeagueId: Int, number : Int, callback: (jogos: Array<Match>, mensagem : String?) -> Unit){
-        interactor.nextMatches(LeagueId, number){ m, flag ->
+    fun nextMatches(LeagueId: Int, number : Int, update : Int, callback: (jogos: Array<Match>, mensagem : String?) -> Unit){
+        interactor.nextMatches(LeagueId, number, update){ m, flag ->
 
             if(flag  == 0){
                 callback(m,app.applicationContext.getString(R.string.empty_jogos_futuros))
@@ -203,8 +203,8 @@ class FootballAPIViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun lastMatches(LeagueId: Int, number: Int, callback: (jogos: Array<Match>) -> Unit){
-        interactor.lastMatches(LeagueId, number){ m ->
+    fun lastMatches(LeagueId: Int, number: Int, update : Int, callback: (jogos: Array<Match>) -> Unit){
+        interactor.lastMatches(LeagueId, update, number){ m ->
 
             var tempo = app.applicationContext.getString(R.string.cancelado)
             var arbitro = app.applicationContext.getString(R.string.indefinido)

@@ -66,4 +66,5 @@
     <string name="profile">PERFIL</string>
     <string name="map">MAPA</string>
     <string name="chatbot">CHATBOT</string>
+    <string name="atualizar_tabela">Atualizar tabela</string>
 </resources>

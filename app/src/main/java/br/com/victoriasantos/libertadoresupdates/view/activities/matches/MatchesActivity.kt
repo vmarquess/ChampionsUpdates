@@ -3,8 +3,7 @@ package br.com.victoriasantos.libertadoresupdates.view.activities.matches
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
@@ -23,8 +22,11 @@ class MatchesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_jogos)
         pBar.visibility = GONE
         configureRecyclerView()
-        showMatches()
+        showMatches(0)
 
+        atualizar.setOnClickListener {
+            showMatches(1)
+        }
         jogosProx.setOnClickListener{
             startActivity(Intent(this, NextMatchesActivity::class.java))
             finish()
@@ -43,9 +45,12 @@ class MatchesActivity : AppCompatActivity() {
         JogosRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    fun showMatches(){
+    fun showMatches(update : Int){
+        if(update == 1){
+            JogosRecyclerView.adapter = null
+        }
         pBar.visibility = VISIBLE
-        viewModel.matches(530){ matches ->
+        viewModel.matches(530, update){ matches ->
             val adapter = MatchesAdapter(matches)
             JogosRecyclerView.adapter = adapter
             pBar.visibility = GONE
