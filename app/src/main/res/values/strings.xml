@@ -68,4 +68,8 @@
     <string name="chatbot">CHATBOT</string>
     <string name="atualizar_tabela">Atualizar tabela</string>
     <string name="last_update">\Última atualização: \</string>
+    <string name="manual">Você está vendo o estádio do atual campeão! Navege pelo mapa para descobrir onde estão localizados os estádios de todos os times que participaram/participam do torneio dessa temporada! Clique no botão de centralizar mapa no canto superiror esquerdo para ver os outros marcadores, eles indicam os estadios!</string>
+    <string name="title">Mapa ChampionsUpdates</string>
+    <string name="ok">OK, ENTENDI</string>
+    <string name="not_show_again">NÃO MOSTRAR NOVAMENTE</string>
 </resources>

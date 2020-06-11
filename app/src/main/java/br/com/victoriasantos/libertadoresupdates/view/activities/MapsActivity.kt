@@ -51,6 +51,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         manual()
+        locationCallback = object : LocationCallback() {
+        }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         createLocationRequest()
     }
@@ -60,14 +62,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
             if(sharedPref.getBoolean(showManual,true )){
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Mapa ChampionsUpdates")
-                builder.setMessage("Você está vendo o estádio do atual campeão! Navege pelo mapa para descobrir onde estão localizados os estádios de todos os times que participaram/participam do torneio dessa temporada! Clique no botão de centralizar mapa para ver os outros marcadores, eles indicam os estadios!")
+                builder.setTitle(getString(R.string.title))
+                builder.setMessage(getString(R.string.manual))
                 builder.apply {
-                    setPositiveButton("OK, ENTENDI", object : DialogInterface.OnClickListener {
+                    setPositiveButton(getString(R.string.ok), object : DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, which: Int) {
                         }
                     })
-                    setNegativeButton("NÃO MOSTRAR NOVAMENTE", object : DialogInterface.OnClickListener {
+                    setNegativeButton(getString(R.string.not_show_again), object : DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, which: Int) {
                             sharedPref.edit().putBoolean(showManual, false).apply()
 
@@ -102,13 +104,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private fun GPSlocation() {
         mMap.isMyLocationEnabled = true
 
-        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
-
-            if (location != null) {
-                val currentLatLng = LatLng(location.latitude, location.longitude)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
-            }
+        fusedLocationClient.lastLocation.addOnSuccessListener(this) {
         }
+
     }
 
     private fun createLocationRequest() {
