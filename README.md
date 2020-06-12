@@ -15,7 +15,7 @@
 ## MENU E FUNCIONALIDADES
 
 <p align="justify">Para iniciar sua jornada no aplicativo é necessário criar um cadastro, pois assim você conseguirá utilizar tudo que o ChampionsUpdates tem para lhe oferecer.
-<p align="justify">Ao chegar no <b><a href="![Menu](https://user-images.githubusercontent.com/48809314/84452334-ee4fcd80-ac2b-11ea-88e7-02b0bb1933b5.jpeg">menu<a></b> você terá algumas opções: 
+<p align="justify">Ao chegar no <b><a href="![Menu]https://user-images.githubusercontent.com/48809314/84456485-74711180-ac36-11ea-8b07-a99180de9fd5.jpeg">menu<a></b> você terá algumas opções: 
 
 <li><b>Times:</b> Onde será encontado os times participante da Champions League.
 <li><b>Grupos:</b> Irá conter informações dos grupos conforme a tabela de classificações.
