@@ -42,7 +42,7 @@ Foi utilizado algumas ferramentas, sendo elas:
 Você precisará clonar o repositório.
 
 ```
-git clone https://github.com/vmarquess/ChampionsUpdates
+git clone href="https://github.com/vmarquess/ChampionsUpdates"
 ```
 
 Assim você irá garantir que está na branch principal.
@@ -70,7 +70,7 @@ Siga o passo a passo da <a href="https://developer.android.com/studio/run/emulat
 
 ## DESENVOLVEDORES
 Este aplicativo foi feito com a ajuda de:
-<p align="justify"> :soccer: <a href="https://github.com/sousaf"> Fernando </a> </p>
+<p align="justify"> :soccer: <a href="https://github.com/sousaf"> Fernando Sousa </a> </p>
 <p align="justify"> :soccer: <a href="https://github.com/Jennysoares"> Jennifer Jerônimo </a> </p>
 <p align="justify"> :soccer: <a href="https://github.com/mariliaalvim"> Marília Alvim </a> </p>
 <p align="justify"> :soccer: <a href="https://github.com/vmarquess"> Victória Marques </a> </p>
