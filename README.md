@@ -42,7 +42,7 @@ Foi utilizado algumas ferramentas, sendo elas:
 Você precisará clonar o repositório.
 
 ```
-git clone href="https://github.com/vmarquess/ChampionsUpdates"
+git clone https://github.com/vmarquess/ChampionsUpdates
 ```
 
 Assim você irá garantir que está na branch principal.
