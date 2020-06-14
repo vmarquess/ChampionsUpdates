@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.victoriasantos.libertadoresupdates">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,16 +17,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activities.jogos.JogosAcontecendoActivity"></activity>
-        <activity android:name=".view.activities.jogos.JogosAnterioresActivity" />
-        <activity android:name=".view.activities.jogos.ProximosJogosActivity" />
-        <activity android:name=".view.activities.jogos.JogosActivity" />
-        <activity android:name=".view.activities.TimesActivity" />
-        <activity android:name=".view.activities.GruposActivity" />
+        <activity android:name=".view.activities.PlayersActivity"></activity>
+        <activity android:name=".view.activities.ChatBotActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".view.activities.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".view.activities.matches.OnGoingMatchesActivity" />
+        <activity android:name=".view.activities.matches.PastMatchesActivity" />
+        <activity android:name=".view.activities.matches.NextMatchesActivity" />
+        <activity android:name=".view.activities.matches.MatchesActivity" />
+        <activity android:name=".view.activities.TeamsActivity" />
+        <activity android:name=".view.activities.GroupsActivity" />
         <activity android:name=".view.activities.ProfileActivity" />
-        <activity android:name=".view.activities.cadastro_login.RecuperacaoSenhaActivity" />
-        <activity android:name=".view.activities.cadastro_login.CadastroActivity" />
-        <activity android:name=".view.activities.cadastro_login.LoginActivity">
+        <activity android:name=".view.activities.registerAndLogin.RecuperacaoSenhaActivity" />
+        <activity android:name=".view.activities.registerAndLogin.RegisterActivity" />
+        <activity android:name=".view.activities.registerAndLogin.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

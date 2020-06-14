@@ -1,14 +1,12 @@
 package br.com.victoriasantos.libertadoresupdates.repository
 
 import android.content.Context
-import br.com.victoriasantos.libertadoresupdates.domain.Evento
-import br.com.victoriasantos.libertadoresupdates.domain.Match
+import br.com.victoriasantos.libertadoresupdates.domain.*
 import retrofit2.Call
-import br.com.victoriasantos.libertadoresupdates.domain.Team
-import br.com.victoriasantos.libertadoresupdates.domain.TeamRanked
-import br.com.victoriasantos.libertadoresupdates.repository.dto.MatchesAPIDTO
-import br.com.victoriasantos.libertadoresupdates.repository.dto.TableAPIDTO
-import br.com.victoriasantos.libertadoresupdates.repository.dto.TimeAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.MatchesAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.PlayersDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.TableAPIDTO
+import br.com.victoriasantos.libertadoresupdates.repository.webdto.TimeAPIDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -17,8 +15,8 @@ import retrofit2.http.Path
 import retrofit2.Callback
 
 
-interface TimeInterfaceRepository{
 
+interface TeamInterfaceRepository{
     @GET("teams/league/{LeagueId}")
     fun teams(
         @Path("LeagueId") LeagueId: Int,
@@ -27,7 +25,7 @@ interface TimeInterfaceRepository{
     ): Call<TimeAPIDTO>
 }
 
-interface TabelaInterfaceRepository {
+interface TableInterfaceRepository {
     @GET("leagueTable/{LeagueId}")
 
     fun table(
@@ -37,7 +35,7 @@ interface TabelaInterfaceRepository {
     ): Call<TableAPIDTO>
 }
 
-interface JogosInterface{
+interface MatchesInterface{
 
     @GET("fixtures/league/{LeagueId}")
     fun matches(
@@ -48,7 +46,7 @@ interface JogosInterface{
     ):Call<MatchesAPIDTO>
 }
 
-interface JogosAcontecendoInterface{
+interface onGoingMatchesInterface{
 
     @GET("fixtures/live/{LeagueId}")
     fun currentMatches(
@@ -59,8 +57,7 @@ interface JogosAcontecendoInterface{
     ):Call<MatchesAPIDTO>
 }
 
-interface JogosProximosInterface{
-
+interface NextMatchesInterface{
     @GET("fixtures/league/{LeagueId}/next/{number}")
     fun matchesProximas(
         @Path("LeagueId") LeagueId: Int,
@@ -71,7 +68,7 @@ interface JogosProximosInterface{
     ):Call<MatchesAPIDTO>
 }
 
-interface JogosAnterioresInterface{
+interface PastMatchesInterface{
 
     @GET("fixtures/league/{LeagueId}/last/{number}")
     fun matchesProximas(
@@ -83,13 +80,24 @@ interface JogosAnterioresInterface{
     ):Call<MatchesAPIDTO>
 }
 
+interface PlayersInterface{
+    @GET("players/squad/{TeamId}/{season}")
+    fun players(
+        @Path("TeamId") TeamId: Int,
+        @Path("season") season: String,
+        @Header("x-rapidapi-key") apiKey: String = "14567510a0msh03fa53e44f61a66p16eb26jsn439718c20472",
+        @Header("x-rapidapi-host") host: String = "api-football-v1.p.rapidapi.com"
+    ): Call<PlayersDTO>
+
+}
 class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(context, baseUrl) {
-    private val serviceTeams = retrofit.create(TimeInterfaceRepository::class.java)
-    private val serviceTable = retrofit.create(TabelaInterfaceRepository::class.java)
-    private val serviceMatches = retrofit.create(JogosInterface::class.java)
-    private val servicecurrentMatches = retrofit.create(JogosAcontecendoInterface::class.java)
-    private val serviceNextMatches = retrofit.create(JogosProximosInterface::class.java)
-    private val serviceLastMatches = retrofit.create(JogosAnterioresInterface::class.java)
+    private val serviceTeams = retrofit.create(TeamInterfaceRepository::class.java)
+    private val serviceTable = retrofit.create(TableInterfaceRepository::class.java)
+    private val serviceMatches = retrofit.create(MatchesInterface::class.java)
+    private val servicecurrentMatches = retrofit.create(onGoingMatchesInterface::class.java)
+    private val serviceNextMatches = retrofit.create(NextMatchesInterface::class.java)
+    private val serviceLastMatches = retrofit.create(PastMatchesInterface::class.java)
+    private val servicePlayers = retrofit.create(PlayersInterface::class.java)
 
 
     fun teams(LeagueId: Int,callback: (times: Array<Team>) -> Unit) {
@@ -107,7 +115,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
                         country = t.country,
                         estadio = t.estadio,
                         fundacao = t.fundacao,
-                        id = t.team_id.toString()
+                        id = t.team_id!!
                     )
                     result.add(domain)
                 }
@@ -201,11 +209,11 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
             override fun onResponse(call: Call<MatchesAPIDTO>, response: Response<MatchesAPIDTO>) {
                 val matches = response.body()?.api?.fixtures
                 val result = mutableListOf<Match>()
-                val evento = mutableListOf<Evento>()
+                val evento = mutableListOf<Event>()
 
                 matches?.forEach { m ->
                     m.events?.forEach { e ->
-                        val newEvent = Evento(
+                        val newEvent = Event(
                             evento_acrescimo = e.acrescimo.toString(),
                             evento_tempo = e.tempo.toString(),
                             evento_type = e.type,
@@ -277,7 +285,7 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
         })
     }
 
-    fun lastMatches(LeagueId: Int, number: Int, callback: (Proximosjogos: Array<Match>) -> Unit){
+    fun lastMatches(LeagueId: Int, number: Int, callback: (nextmatches: Array<Match>) -> Unit){
 
         serviceLastMatches.matchesProximas(LeagueId, number).enqueue(object: Callback<MatchesAPIDTO> {
 
@@ -307,6 +315,33 @@ class FootballAPIRepository(context: Context, baseUrl: String) : BaseRetrofit(co
 
             override fun onFailure(call: Call<MatchesAPIDTO>, t: Throwable) {
                 callback(arrayOf())
+            }
+        })
+    }
+
+    fun players(id: String, season: String, callback: (players: Array<Player>?) -> Unit){
+
+        servicePlayers.players(id.toInt(), season).enqueue(object: Callback<PlayersDTO>{
+            override fun onFailure(call: Call<PlayersDTO>, t: Throwable) {
+                callback(null)
+        }
+
+            override fun onResponse(call: Call<PlayersDTO>, response: Response<PlayersDTO>) {
+              val result = response.body()?.api?.players
+                val players = mutableListOf<Player>()
+
+                result?.forEach { p->
+                    val player = Player(
+                        name = p.name,
+                        number = p.number.toString(),
+                        position = p.position,
+                        age = p.age.toString(),
+                        nationality = p.nationality
+
+                    )
+                    players.add(player)
+                }
+                callback(players.toTypedArray())
             }
         })
     }

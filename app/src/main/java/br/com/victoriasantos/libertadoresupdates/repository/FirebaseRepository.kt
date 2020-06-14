@@ -3,6 +3,7 @@ package br.com.victoriasantos.libertadoresupdates.repository
 import android.content.Context
 import br.com.victoriasantos.libertadoresupdates.domain.Profile
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -44,6 +45,18 @@ class FirebaseRepository(context: Context){
         }
     }
 
+    fun logout(callback: (result: String) -> Unit){
+        mAuth.signOut()
+        callback("S")
+    }
+
+    fun verifyLogin(callback: (result: FirebaseUser?) -> Unit){
+        mAuth.addAuthStateListener { user ->
+            callback(user.currentUser)
+        }
+    }
+
+
     fun changePassword(email: String){
         mAuth.sendPasswordResetEmail(email)
     }
@@ -84,7 +97,7 @@ class FirebaseRepository(context: Context){
         }
     }
 
-    fun saveData(email: String, nome: String, telefone: String, time: String, callback: (result: String) -> Unit){
+    fun saveData(email: String, nome: String, telefone: String, time: String, callback: (result: String, profile : Profile?) -> Unit){
         profile = Profile(
             email = email,
             nome = nome,
@@ -98,14 +111,28 @@ class FirebaseRepository(context: Context){
             // Variável que define qual nó será atualizado, nesse caso será o nó "Usuários"
             val userprofile = database.getReference("Usuários/$uid") // $uid é o onde será substituido pelo id do usuário logado
             userprofile.setValue(profile) //Atualiza/cria os dados
-            callback("SUCCESS")
+            callback("SUCCESS", profile)
 
         }
-        else
-        {
-            callback("UID RECOVER FAIL")
+        else {
+            callback("UID RECOVER FAIL",null)
         }
 
+    }
+
+    fun getMarkers(callback: (snapshot: DataSnapshot?) -> Unit) {
+
+        val ref = database.getReference("Location")
+
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                callback(null)
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                callback(snapshot)
+            }
+        })
     }
 
 

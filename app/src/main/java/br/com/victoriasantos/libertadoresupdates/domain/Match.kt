@@ -15,10 +15,10 @@ data class Match(
     val tempo: String? = null,
     val estadio : String? = null,
     val arbitro : String? = null,
-    val eventos: Array<Evento>?
+    val eventos: Array<Event>?
 )
 
-data class Evento(
+data class Event(
     val evento_tempo: String? = null,
     val evento_acrescimo: String? = null,
     val evento_teamName: String? = null,

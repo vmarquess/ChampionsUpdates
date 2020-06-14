@@ -3,8 +3,11 @@ package br.com.victoriasantos.libertadoresupdates.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import br.com.victoriasantos.libertadoresupdates.R
+import br.com.victoriasantos.libertadoresupdates.domain.Location
+import br.com.victoriasantos.libertadoresupdates.domain.Player
 import br.com.victoriasantos.libertadoresupdates.domain.Profile
 import br.com.victoriasantos.libertadoresupdates.interactor.FirebaseInteractor
+import com.google.android.gms.maps.model.LatLng
 
 class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
 
@@ -36,6 +39,13 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
 
     }
 
+    fun logout(callback: (result: String) -> Unit){
+        interactor.logout(callback)
+    }
+
+    fun verifyLogin(callback: (result: String?) -> Unit){
+        interactor.verifyLogin(callback)
+    }
 
     fun changePassword(email: String, callback: (result: String, id: Int) -> Unit){
         interactor.changePassword(email){ result ->
@@ -75,6 +85,11 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
             }
         }
     }
+
+    fun getMarkers(callback: (markers: Array<Location>?) -> Unit) {
+        interactor.getMarkers(callback)
+    }
+
 
 
 

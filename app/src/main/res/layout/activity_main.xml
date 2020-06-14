@@ -4,137 +4,337 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.MainActivity"
-    android:background="@drawable/mainbackground">
+    android:background="@drawable/mainbackground"
+    tools:context=".view.activities.MainActivity">
+
 
     <ImageView
         android:id="@+id/liberta_logo"
-        android:layout_width="410dp"
-        android:layout_height="189dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="416dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_champions" />
 
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintTop_toBottomOf="@id/liberta_logo"
+        app:layout_constraintVertical_bias="0.863" />
 
     <GridLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintTop_toBottomOf="@id/liberta_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:columnCount="2"
+        android:rowCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:rowCount="4"
-        android:columnCount="1">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/liberta_logo">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/times"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_height="10dp"
             android:layout_width="0dp"
-            android:layout_marginBottom="5dp">
+            android:layout_height="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1">
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/mainbackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/graduate"
-                android:gravity="center"
-                android:text="Times"
-                android:textColor="@color/Branco"
-                android:textSize="24sp"
-                android:textStyle="italic" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/timestext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="75dp"
+                    android:fontFamily="@font/graduate"
+                    android:gravity="center"
+                    android:text="@string/teams"
+                    android:textColor="@color/Branco"
+                    android:textSize="24sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/teams"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/timestext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/grupos"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_height="15dp"
             android:layout_width="0dp"
-            android:layout_marginBottom="5dp">
+            android:layout_height="15dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+          >
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/mainbackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/graduate"
-                android:gravity="center"
-                android:text="Grupos"
-                android:textColor="@color/Branco"
-                android:textSize="24sp"
-                android:textStyle="italic" />
+                android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/grupostext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="75dp"
+                    android:fontFamily="@font/graduate"
+                    android:gravity="center"
+                    android:text="@string/groups"
+                    android:textColor="@color/Branco"
+                    android:textSize="24sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/groups"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grupostext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/derrotas"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_height="10dp"
             android:layout_width="0dp"
-            android:layout_marginBottom="5dp">
+            android:layout_height="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+         >
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/mainbackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/graduate"
-                android:gravity="center"
-                android:text="Jogos"
-                android:textColor="@color/Branco"
-                android:textSize="24sp"
-                android:textStyle="italic" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/jogostext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="75dp"
+                    android:fontFamily="@font/graduate"
+                    android:gravity="center"
+                    android:text="@string/matches"
+                    android:textColor="@color/Branco"
+                    android:textSize="24sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/soccer_field"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/jogostext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/perfil"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_height="10dp"
             android:layout_width="0dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="5dp">
+            android:layout_height="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+         >
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/mainbackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/perfiltext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="75dp"
+                    android:fontFamily="@font/graduate"
+                    android:gravity="center"
+                    android:text="@string/profile"
+                    android:textColor="@color/Branco"
+                    android:textSize="24sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/account_circle_outline"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/perfiltext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chatbot"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+           >
+
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/mainbackground"
+                android:scaleType="fitXY" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/chatbottext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="75dp"
                 android:fontFamily="@font/graduate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:gravity="center"
-                android:text="Perfil"
+                android:text="@string/chatbot"
                 android:textColor="@color/Branco"
                 android:textSize="24sp"
                 android:textStyle="italic" />
 
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/bot"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chatbottext" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mapa"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/mainbackground"
+                android:scaleType="fitXY" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/mapatext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="75dp"
+                    android:fontFamily="@font/graduate"
+                    android:gravity="center"
+                    android:text="@string/map"
+                    android:textColor="@color/Branco"
+                    android:textSize="24sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/map"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mapatext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
     </GridLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
