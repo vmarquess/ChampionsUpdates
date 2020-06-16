@@ -39,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
     private fun login() {
         pBar.visibility = VISIBLE
         val email = campoEmail.text.toString()
@@ -60,6 +59,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun esqueciSenha() {
-        startActivity(Intent(this, RecuperacaoSenhaActivity::class.java))
+        startActivity(Intent(this, PasswordRecoveryActivity::class.java))
     }
 }

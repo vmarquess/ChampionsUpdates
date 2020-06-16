@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.view.adapter.MatchesAdapter
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FootballAPIViewModel
-import kotlinx.android.synthetic.main.activity_jogos.*
+import kotlinx.android.synthetic.main.activity_matches.*
 
 class MatchesActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class MatchesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jogos)
+        setContentView(R.layout.activity_matches)
         pBar.visibility = GONE
         configureRecyclerView()
         showMatches(0)

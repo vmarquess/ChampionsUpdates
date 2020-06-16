@@ -7,9 +7,9 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.viewmodel.FirebaseViewModel
-import kotlinx.android.synthetic.main.activity_recuperacao_senha.*
+import kotlinx.android.synthetic.main.activity_password_recovery.*
 
-class RecuperacaoSenhaActivity : AppCompatActivity() {
+class PasswordRecoveryActivity : AppCompatActivity() {
 
 
     private val viewModel: FirebaseViewModel by lazy {
@@ -18,7 +18,7 @@ class RecuperacaoSenhaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recuperacao_senha)
+        setContentView(R.layout.activity_password_recovery)
 
         bt_enviar.setOnClickListener { alterarSenha() }
 

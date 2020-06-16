@@ -18,9 +18,7 @@ abstract class AndroidRoomDatabase() : RoomDatabase() {
     abstract fun TeamDao(): TeamDAO
     abstract fun TeamRankedDao(): TeamRankedDAO
     abstract fun MatchDAO(): MatchDAO
-
 }
-
 
 object Database {
     @Volatile

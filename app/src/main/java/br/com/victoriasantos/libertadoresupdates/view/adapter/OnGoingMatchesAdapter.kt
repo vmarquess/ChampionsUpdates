@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.victoriasantos.libertadoresupdates.R
 import br.com.victoriasantos.libertadoresupdates.domain.Match
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.jogos_acontendo_item.view.*
+import kotlinx.android.synthetic.main.ongoingmatches_item.view.*
 
 
 class OnGoingMatchesAdapter(private val dataSet: Array<Match>) : RecyclerView.Adapter<OnGoingMatchesAdapter.JogosAcontecendoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JogosAcontecendoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.jogos_acontendo_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.ongoingmatches_item, parent, false)
         return JogosAcontecendoViewHolder(view)
     }
 

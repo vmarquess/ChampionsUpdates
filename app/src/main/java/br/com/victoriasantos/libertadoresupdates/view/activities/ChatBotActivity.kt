@@ -32,9 +32,6 @@ class ChatBotActivity : AppCompatActivity() {
         my_chat_view.setInputTextHint("Digite 'Olá' para iniciar conversa.")
         my_chat_view.setRightBubbleColor(Color.BLUE)
         my_chat_view.setBackgroundDrawable(getDrawable(R.drawable.mainbackground))
-        my_chat_view.setUsernameTextColor(Color.WHITE);
-        my_chat_view.setSendTimeTextColor(Color.WHITE);
-        my_chat_view.setDateSeparatorColor(Color.WHITE);
         my_chat_view.setMessageMaxWidth(700)
 
         my_chat_view.setOnClickSendButtonListener(
@@ -49,7 +46,7 @@ class ChatBotActivity : AppCompatActivity() {
                         Toast.makeText(this,getString(R.string.conection_error), Toast.LENGTH_LONG).show()
                     }
                     else {
-                        my_chat_view.send(Message.Builder().setRight(true).setUser(agent).setText(response!!).build()
+                        my_chat_view.send(Message.Builder().setRight(true).setUser(agent).setText(response).build()
                         )
                     }
                 }

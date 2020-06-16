@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activities.PlayersActivity"></activity>
+        <activity android:name=".view.activities.PlayersActivity"/>
         <activity android:name=".view.activities.ChatBotActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -41,7 +41,7 @@
         <activity android:name=".view.activities.TeamsActivity" />
         <activity android:name=".view.activities.GroupsActivity" />
         <activity android:name=".view.activities.ProfileActivity" />
-        <activity android:name=".view.activities.registerAndLogin.RecuperacaoSenhaActivity" />
+        <activity android:name=".view.activities.registerAndLogin.PasswordRecoveryActivity" />
         <activity android:name=".view.activities.registerAndLogin.RegisterActivity" />
         <activity android:name=".view.activities.registerAndLogin.LoginActivity">
             <intent-filter>
